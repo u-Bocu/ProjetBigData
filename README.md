@@ -11,4 +11,5 @@ ML -> solution 4 :<br>
 - TSD à déterminer en fonction du bruit<br>
 
 Dataviz<br>
-récup les questions
+Récup les questions --> https://quipoquiz.com/module/sed/quiz/fr/start_quiz.snc?quiz=514<br>
+Récup des réponses --> https://quipoquiz.com/module/sed/quiz/fr/answer_question.snc?quiz=514&answer=true&question=16628
