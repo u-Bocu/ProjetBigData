@@ -3,7 +3,7 @@
 Front: Angular <br>
 Back: Python (Flask)<br>
 
-BDD sur le cloud (AWS ou Azure ?)<br>
+BDD MySQL sur le cloud (AWS ou Azure ?)<br>
 
 ML -> solution 4 :<br>
 - surentrainement d'un modèle complexe type Wav2Vec<br>
