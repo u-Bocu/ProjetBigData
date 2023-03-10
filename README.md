@@ -1,13 +1,13 @@
 # ProjetBigData
 
-Front: Angular
-Back: Python (Flask)
+Front: Angular <br>
+Back: Python (Flask)<br>
 
-BDD sur le cloud (AWS ou Azure ?)
+BDD sur le cloud (AWS ou Azure ?)<br>
 
-ML -> solution 4 :
-- surentrainement d'un modèle complexe type Wav2Vec
-- TSD à déterminer en fonction du bruit
+ML -> solution 4 :<br>
+- surentrainement d'un modèle complexe type Wav2Vec<br>
+- TSD à déterminer en fonction du bruit<br>
 
-Dataviz
+Dataviz<br>
 récup les questions
