@@ -53,7 +53,7 @@ export class LoginComponent {
             this.localStorageService.saveData('user_id', response.data[0]);
             this.localStorageService.saveData('username', response.data[1]);
             this.eventService.emitRefreshNavigationEvent();
-            this.router.navigate(['/dashboard']).then(r => r);
+            this.router.navigate(['/quiz']).then(r => r);
           }
         });
     }

@@ -41,9 +41,9 @@ export class NavigationComponent {
     this.toastr.success('Déconnexion réussie', 'Succès', {
       positionClass: 'test'
     });
-    this.router.navigateByUrl('/dashboard').then(() => {
+    this.router.navigateByUrl('/quiz').then(() => {
       this.eventService.emitRefreshNavigationEvent();
-      this.eventService.emitRefreshDashboardEvent();
+      this.eventService.emitRefreshQuizEvent();
     });
   }
 

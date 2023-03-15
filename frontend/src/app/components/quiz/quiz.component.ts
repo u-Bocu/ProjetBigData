@@ -5,11 +5,11 @@ import { Observable } from "rxjs";
 import { Card } from "../../models/card.model";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-quiz',
+  templateUrl: './quiz.component.html',
+  styleUrls: ['./quiz.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class QuizComponent implements OnInit {
   nbColonnes?: number = 5;
   cards?: Observable<Array<Card>>;
   isLinear = false;

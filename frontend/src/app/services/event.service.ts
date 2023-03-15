@@ -5,19 +5,19 @@ import {EventEmitter, Injectable} from '@angular/core';
 })
 export class EventService {
   private navigationEvent = new EventEmitter<any>();
-  private dashboardEvent = new EventEmitter<any>();
+  private quizEvent = new EventEmitter<any>();
 
   emitRefreshNavigationEvent() {
     this.navigationEvent.emit();
   }
-  emitRefreshDashboardEvent() {
-    this.dashboardEvent.emit();
+  emitRefreshQuizEvent() {
+    this.quizEvent.emit();
   }
 
   getRefreshNavigationEvent() {
     return this.navigationEvent;
   }
-  getRefreshDashboardEvent() {
-    return this.dashboardEvent;
+  getRefreshQuizEvent() {
+    return this.quizEvent;
   }
 }

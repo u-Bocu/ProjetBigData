@@ -1,4 +1,4 @@
-.dashboard-card {
+.quiz-card {
   position: absolute;
   top: 15px;
   left: 15px;
@@ -6,7 +6,7 @@
   bottom: 15px;
 }
 
-.dashboard-card-content {
+.quiz-card-content {
   text-align: center;
 }
 

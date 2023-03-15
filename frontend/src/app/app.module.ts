@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from "@angular/common/http";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
@@ -26,11 +25,12 @@ import { ToastrModule } from 'ngx-toastr';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { MatStepperModule } from '@angular/material/stepper';
+import { QuizComponent } from "./components/quiz/quiz.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
+    QuizComponent,
     NavigationComponent,
     SignupComponent,
     LoginComponent,
