@@ -1,7 +1,7 @@
 <div class="grid-container">
   <h1 class="mat-h1">Quiz</h1>
 
-  <mat-horizontal-stepper linear="true">
+  <mat-horizontal-stepper linear="true" labelPosition="bottom">
 
     <mat-step editable="false" *ngFor="let card of cards | async">
       <mat-grid-list [cols]="nbColonnes" rowHeight="200px">
@@ -25,6 +25,10 @@
 
               </mat-grid-list>
             </mat-card-content>
+
+            <mat-card-footer>
+              <button mat-raised-button color="primary" matStepperNext>Next</button>
+            </mat-card-footer>
           </mat-card>
 
         </mat-grid-tile>
