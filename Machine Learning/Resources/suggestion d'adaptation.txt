@@ -1,0 +1,15 @@
+Voici une suggestion d'ordre pour les couches d'un modèle Transformer adapté au traitement d'une décomposition en ondelettes d'un signal audio :
+
+    La séquence d'entrée, qui est une représentation en ondelettes du signal audio, est d'abord injectée dans une couche de convolution pour extraire des caractéristiques locales.
+
+    Ensuite, la couche multi-têtes d'attention est utilisée pour modéliser les dépendances entre les caractéristiques extraites par la couche de convolution.
+
+    La sortie de la couche multi-têtes d'attention est ensuite injectée dans une couche de feedforward qui applique une transformation linéaire pour créer de nouvelles représentations plus abstraites.
+
+    Une couche de normalisation peut être ajoutée après chaque couche pour normaliser les vecteurs de représentation de la séquence.
+
+    Plusieurs couches d'encodage peuvent être empilées les unes sur les autres pour permettre au modèle de capturer des informations de contexte plus complexes.
+
+    Une fois que les couches d'encodage sont terminées, la couche de décodage peut être utilisée pour générer une sortie à partir de la représentation continue de la séquence.
+
+    Enfin, une couche de sortie peut être ajoutée pour produire la sortie finale du modèle.

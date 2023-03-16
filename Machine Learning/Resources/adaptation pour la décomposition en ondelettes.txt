@@ -1,0 +1,7 @@
+Techniquement, il est possible d'entraîner un modèle Transformer pour prendre en entrée une décomposition en ondelettes d'un signal audio. Cependant, cela nécessiterait de reconfigurer le modèle pour tenir compte des spécificités du traitement du signal audio.
+
+Les modèles Transformer ont été initialement conçus pour traiter des séquences de symboles discrets tels que des mots dans du texte, mais ils ont été adaptés pour traiter des séquences de valeurs continues telles que des pixels dans des images. Pour traiter des signaux audio, une approche courante consiste à convertir le signal en une représentation de spectre en utilisant une transformée de Fourier ou une transformation en ondelettes.
+
+Cependant, une décomposition en ondelettes peut générer une représentation de taille variable, car la longueur de la séquence dépend de la fréquence d'échantillonnage et du nombre de niveaux de décomposition. Pour cette raison, il peut être nécessaire d'ajouter une couche de pooling pour agréger les représentations en une taille fixe. Il peut également être utile d'ajouter des couches spécialisées pour le traitement du signal audio, telles que des couches de convolution.
+
+En résumé, un modèle Transformer simple peut être adapté pour traiter une décomposition en ondelettes d'un signal audio, mais cela nécessiterait une adaptation du modèle pour tenir compte des spécificités du traitement du signal audio et de la représentation en ondelettes.

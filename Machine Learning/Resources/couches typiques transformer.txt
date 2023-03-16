@@ -1,0 +1,15 @@
+Les couches d'un modèle Transformer sont empilées les unes sur les autres dans un ordre spécifique pour transformer une séquence d'entrée en une séquence de sortie. Voici l'ordre typique des couches dans un modèle Transformer :
+
+    La séquence d'entrée est d'abord injectée dans la couche d'encodage.
+
+    La couche d'encodage est généralement constituée de deux sous-couches, la couche multi-têtes d'attention et la couche de feedforward. Dans un premier temps, la couche multi-têtes d'attention calcule les scores d'attention entre les différents mots de la séquence. Dans un second temps, la couche de feedforward applique une transformation linéaire aux vecteurs de représentation obtenus à partir de la couche multi-têtes d'attention.
+
+    Après chaque couche d'encodage, une couche de normalisation est souvent appliquée pour normaliser les vecteurs de représentation de la séquence.
+
+    Plusieurs couches d'encodage peuvent être empilées les unes sur les autres pour permettre au modèle de capturer des informations de contexte plus complexes.
+
+    Une fois que les couches d'encodage sont terminées, la couche de décodage peut être utilisée pour générer une sortie à partir de la représentation continue de la séquence.
+
+    Enfin, une couche de sortie peut être ajoutée pour produire la sortie finale du modèle.
+
+Il est important de noter que cet ordre peut varier en fonction de la tâche et de la configuration du modèle Transformer, mais c'est l'ordre de base que l'on retrouve dans la plupart des architectures Transformer.
