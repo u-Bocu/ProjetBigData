@@ -26,6 +26,9 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { QuizComponent } from "./components/quiz/quiz.component";
+import { QuizListComponent } from './components/quiz-list/quiz-list.component';
+import { TopicListComponent } from './components/topic-list/topic-list.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { QuizComponent } from "./components/quiz/quiz.component";
     SignupComponent,
     LoginComponent,
     ForgetPasswordComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    QuizListComponent,
+    TopicListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
