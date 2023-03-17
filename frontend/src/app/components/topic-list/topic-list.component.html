@@ -1,1 +1,18 @@
 <p>topic-list works!</p>
+<mat-grid-list [gridCols]="{xs: 1, sm: 2, md: 3, lg: 4, xl: 5}" rowHeight="350px">
+  <mat-grid-tile [colspan]="1" *ngFor="let topic of topics">
+
+    <mat-card class="quiz-card">
+      <mat-card-header>
+        <mat-card-title>
+          Test
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="quiz-card-content">
+        Content test
+      </mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>

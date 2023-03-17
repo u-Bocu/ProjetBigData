@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./topic-list.component.css']
 })
 export class TopicListComponent {
+  public topics: Array<any> = [
+    '','','','','','',''
+  ]
 
 }

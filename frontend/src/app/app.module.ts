@@ -29,6 +29,7 @@ import { QuizComponent } from "./components/quiz/quiz.component";
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { TopicListComponent } from './components/topic-list/topic-list.component';
 import { HomeComponent } from './components/home/home.component';
+import { GridColsDirective } from './directives/grid-cols.directive';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HomeComponent } from './components/home/home.component';
     ChangePasswordComponent,
     QuizListComponent,
     TopicListComponent,
-    HomeComponent
+    HomeComponent,
+    GridColsDirective
   ],
   imports: [
     BrowserModule,
