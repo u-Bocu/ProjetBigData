@@ -36,7 +36,31 @@ class WaveletTransformer(Model):
         self.dense1 = layers.Dense(256, activation='relu')
         self.dense2 = layers.Dense(self.target_vocab_size, activation='softmax')
 
-class EncoderLayer(tf.keras.layers.Layer):
+    def call(self, x):
+        # Prepare wavelets
+        x = self.conv1(x)
+        x, cD = tf.signal.dwt(x, wavelet='haar', axis=-2)
+
+        # Add encoding position
+        seq_len = tf.shape(x)[1]
+        x += self.pos_encoding(tf.range(seq_len))
+
+        # Add encoding layers
+        for i in range(self.n_layers):
+            x = self.encoding_layers[i](x)
+            x = self.dropout(x)
+
+        # Add pooling layer
+        x = self.pooling(x)
+
+        # Add decoding layers
+        x = self.dense1(x)
+        x = self.dense2(x)
+
+        return x
+
+
+class EncoderLayer(layers.Layer):
     def __init__(self, d_model, n_heads, dff, rate=0.1):
         super(EncoderLayer, self).__init__()
 
@@ -54,4 +78,6 @@ class EncoderLayer(tf.keras.layers.Layer):
 
         ffn_output = self.ffn(out1)
         ffn_output = self.dropout2(ffn_output, training=training)
-        out2 = self.layernorm2
+        out2 = self.layernorm2(out1 + ffn_output)
+
+        return out2
