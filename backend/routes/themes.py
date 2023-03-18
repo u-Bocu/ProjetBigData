@@ -1,3 +1,5 @@
+import json
+
 import mysql.connector
 from flask import Blueprint
 from config import DB_CONFIG
@@ -17,8 +19,10 @@ def get_themes():
         cursor = mysqldb.cursor()
         cursor.execute(''' SELECT * FROM themes;''')
 
-        rows = cursor.fetchall()
-        count = len(rows)
+        rows = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
+        count = cursor.rowcount
+
+        cursor.close()
 
     except:
         success = False

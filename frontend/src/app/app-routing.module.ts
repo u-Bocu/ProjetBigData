@@ -6,12 +6,12 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { QuizComponent } from "./components/quiz/quiz.component";
 import { HomeComponent } from "./components/home/home.component";
-import { TopicListComponent } from "./components/topic-list/topic-list.component";
+import { ThemeListComponent } from "./components/theme-list/theme-list.component";
 import { QuizListComponent } from "./components/quiz-list/quiz-list.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'topic-list', component: TopicListComponent },
+  { path: 'theme-list', component: ThemeListComponent },
   { path: 'quiz-list', component: QuizListComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'login', component: LoginComponent},

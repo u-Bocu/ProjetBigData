@@ -1,8 +1,9 @@
+import {Quiz} from "./quiz";
+
 export interface Question {
   id: number;
-  name: string;
-  id_theme: number;
-  id_user: number;
-  status: string;
+  quiz: Quiz;
+  question: string;
+  image_url: string;
   creation_date: Date;
 }

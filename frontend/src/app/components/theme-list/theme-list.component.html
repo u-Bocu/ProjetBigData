@@ -1,0 +1,16 @@
+<mat-grid-list [gridCols]="{xs: 1, sm: 2, md: 3, lg: 3, xl: 3}" rowHeight="250px">
+  <mat-grid-tile [colspan]="1" *ngFor="let theme of themes">
+
+    <mat-card class="theme-card" style="background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('{{theme.lien_image}}');">
+      <mat-card-header>
+        <mat-card-title>
+          {{theme.label}}
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content class="theme-card-content">
+      </mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+</mat-grid-list>
