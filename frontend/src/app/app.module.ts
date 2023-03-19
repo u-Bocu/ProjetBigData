@@ -27,9 +27,10 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { MatStepperModule } from '@angular/material/stepper';
 import { QuizComponent } from "./components/quiz/quiz.component";
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
-import { TopicListComponent } from './components/topic-list/topic-list.component';
+import { ThemeListComponent } from './components/theme-list/theme-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { GridColsDirective } from './directives/grid-cols.directive';
 
 @NgModule({
   declarations: [
@@ -41,8 +42,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     ForgetPasswordComponent,
     ChangePasswordComponent,
     QuizListComponent,
-    TopicListComponent,
-    HomeComponent
+    ThemeListComponent,
+    HomeComponent,
+    GridColsDirective
   ],
   imports: [
     BrowserModule,

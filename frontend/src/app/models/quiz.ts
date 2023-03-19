@@ -1,8 +1,12 @@
+import {Theme} from "./theme";
+import {User} from "./user";
+
 export interface Quiz {
   id: number;
-  id_quiz: number;
-  question: string;
-  image_url: string;
-  response: number;
+  label: string;
+  status: string;
   creation_date: Date;
+  topic: Theme;
+  user: User;
+  lien_image: string;
 }

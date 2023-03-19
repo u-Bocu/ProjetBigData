@@ -2,13 +2,13 @@ h1 {
   margin: 15px;
 }
 
-.quiz-card {
+.theme-card {
   width: 80%;
   height: 80%;
   background-size: 100% 100%;
 }
 
-.quiz-card mat-card-header {
+.theme-card mat-card-header {
   width: 90%;
   height: 100%;
   display: flex;
@@ -16,7 +16,7 @@ h1 {
   align-items: center;
 }
 
-.quiz-card mat-card-title {
+.theme-card mat-card-title {
   color: white;
   font-size: 25px;
 }
