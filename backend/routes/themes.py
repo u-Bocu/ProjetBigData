@@ -1,5 +1,3 @@
-import json
-
 import mysql.connector
 from flask import Blueprint
 from config import DB_CONFIG

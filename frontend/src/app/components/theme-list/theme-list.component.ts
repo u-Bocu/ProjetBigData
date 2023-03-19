@@ -13,7 +13,6 @@ export class ThemeListComponent {
   constructor(private themeService: ThemeService) {
     themeService.getThemes().subscribe(response => {
       this.themes = response.data.rows;
-      console.log(this.themes);
     });
   }
 }
