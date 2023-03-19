@@ -29,6 +29,7 @@ import { QuizComponent } from "./components/quiz/quiz.component";
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { ThemeListComponent } from './components/theme-list/theme-list.component';
 import { HomeComponent } from './components/home/home.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { GridColsDirective } from './directives/grid-cols.directive';
 
 @NgModule({
@@ -50,6 +51,7 @@ import { GridColsDirective } from './directives/grid-cols.directive';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CarouselModule.forRoot(),
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
