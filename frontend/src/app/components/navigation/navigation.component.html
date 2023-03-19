@@ -4,7 +4,7 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    LOGO ICI
+    <img class="logo" src="../../../assets/logo_quiz.png">
     <hr>
     <mat-nav-list>
       <a mat-list-item routerLink="home"><mat-icon fontIcon="quiz" class="menu-icon"></mat-icon>Jouer</a>

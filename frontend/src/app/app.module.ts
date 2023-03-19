@@ -29,6 +29,7 @@ import { QuizComponent } from "./components/quiz/quiz.component";
 import { QuizListComponent } from './components/quiz-list/quiz-list.component';
 import { TopicListComponent } from './components/topic-list/topic-list.component';
 import { HomeComponent } from './components/home/home.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { HomeComponent } from './components/home/home.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CarouselModule.forRoot(),
     MatGridListModule,
     MatCardModule,
     MatMenuModule,

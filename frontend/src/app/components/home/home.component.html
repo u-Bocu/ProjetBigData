@@ -1,1 +1,35 @@
-<p>home works!</p>
+<div class="container">
+  <br><br><br><br>
+  <mat-grid-list cols="4" rowHeight="2:1">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+      <img src="../../../assets/logo_quiz.png" alt="Slide 1" style="display: block; width: 80%;">
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <img src="../../../assets/logo_quiz.png" alt="Slide 1" style="display: block; width: 80%;">
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+  <br><br><br><br>
+</div>
+<div class="container mt-4">
+  <div style="width: 50%; margin: 0 auto;">
+    <carousel [interval]="interval" [showIndicators]="showIndicators">
+      <slide>
+        <img src="../../../assets/logo_quiz.png" alt="Slide 1" style="display: block; width: 100%;">
+      </slide>
+      <slide>
+        <img src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2" style="display: block; width: 100%;">
+      </slide>
+      <slide>
+        <img src="https://via.placeholder.com/600x300?text=Slide+3" alt="Slide 3" style="display: block; width: 100%;">
+      </slide>
+      <slide>
+        <img src="https://via.placeholder.com/600x300?text=Slide+4" alt="Slide 3" style="display: block; width: 100%;">
+      </slide>
+      <slide>
+        <img src="https://via.placeholder.com/600x300?text=Slide+5" alt="Slide 3" style="display: block; width: 100%;">
+      </slide>
+    </carousel>
+  </div>
+</div>
