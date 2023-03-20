@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'theme-list', component: ThemeListComponent },
   { path: 'quiz-list', component: QuizListComponent },
+  { path: 'quiz-list/:idTheme', component: QuizListComponent },
   { path: 'quiz', component: QuizComponent },
   { path: 'login', component: LoginComponent},
   { path: 'sign-up', component: SignupComponent},
