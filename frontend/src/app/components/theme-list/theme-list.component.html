@@ -1,19 +1,21 @@
 <h1>Liste des thèmes</h1>
 
 <mat-grid-list [gridCols]="{xs: 1, sm: 2, md: 3, lg: 3, xl: 3}" rowHeight="250px">
-  <mat-grid-tile [colspan]="1" *ngFor="let theme of themes">
+  <div *ngFor="let theme of themes">
+    <mat-grid-tile [gridColspan]="theme.id === 7 ? {xs: 1, sm: 2, md: 3, lg: 3, xl: 3} : {xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
 
-    <mat-card class="theme-card" routerLink = "/quiz-list/{{theme.id}}"
-              [style.background-image]="'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),' + 'url('+theme.lien_image+')'">
-      <mat-card-header>
-        <mat-card-title>
-          {{theme.label}}
-        </mat-card-title>
-      </mat-card-header>
+      <mat-card class="theme-card" routerLink = "/quiz-list/{{theme.id}}"
+                [style.background-image]="'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),' + 'url('+theme.lien_image+')'">
+        <mat-card-header>
+          <mat-card-title>
+            {{theme.label}}
+          </mat-card-title>
+        </mat-card-header>
 
-      <mat-card-content class="theme-card-content">
-      </mat-card-content>
-    </mat-card>
+        <mat-card-content class="theme-card-content">
+        </mat-card-content>
+      </mat-card>
 
-  </mat-grid-tile>
+    </mat-grid-tile>
+  </div>
 </mat-grid-list>
