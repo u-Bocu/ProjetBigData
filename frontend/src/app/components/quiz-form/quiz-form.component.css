@@ -1,0 +1,22 @@
+h1 {
+  margin: 15px;
+}
+
+.card {
+  width: 80%;
+  height: 80%;
+  background-size: 100% 100%;
+}
+
+.card mat-card-header {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card mat-card-title {
+  color: white;
+  font-size: 25px;
+}

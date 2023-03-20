@@ -31,6 +31,7 @@ import { ThemeListComponent } from './components/theme-list/theme-list.component
 import { HomeComponent } from './components/home/home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { GridColsDirective } from './directives/grid-cols.directive';
+import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { GridColsDirective } from './directives/grid-cols.directive';
     QuizListComponent,
     ThemeListComponent,
     HomeComponent,
-    GridColsDirective
+    GridColsDirective,
+    QuizFormComponent
   ],
   imports: [
     BrowserModule,
