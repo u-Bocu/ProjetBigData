@@ -10,14 +10,17 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class QuizListComponent {
   public quizzes: Array<Quiz> = [];
+  public loading: boolean = false;
 
   constructor(
     private quizService: QuizService,
     private route: ActivatedRoute
   ) {
     const idTheme: number = this.route.snapshot.paramMap.get('idTheme') as unknown as number;
+    this.loading = true;
     quizService.getQuizzes(idTheme).subscribe(response => {
       this.quizzes = response.data.rows;
+      this.loading = false;
     });
   }
 }

@@ -20,3 +20,12 @@ h1 {
   color: white;
   font-size: 25px;
 }
+
+.loader {
+  margin:auto;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  position:absolute;
+}
