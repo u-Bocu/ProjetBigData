@@ -1,8 +1,12 @@
-import pandas as pd
+import librosa
+from libs.dummy_models import DummyModel
 
-def prepare_train_test_datasets():
-    df_train = pd.read_table('dataset/fr/train.tsv')
-    df_test = pd.read_table('dataset/fr/test.tsv')
+model = DummyModel(0)
 
+model.compile(loss='categorical_corssentropy', optimizer='adam', metrics=['accuracy'])
+model.summary()
 
-    
+history = model.fit(train_input, train_output, epochs=10, batch_size=32, validation_data=(test_input, test_output))
+test_loss, test_acc = model.evaluate(test_input, test_output)
+
+print('Accuracy: ', test_acc)
