@@ -16,6 +16,3 @@ model.compile(loss='categorical_corssentropy', optimizer='adam', metrics=['accur
 
 history = model.fit(train_input, train_output, epochs=10)
 test_loss, test_acc = model.evaluate(test_input, test_output)
-
-
-print('Accuracy: ', test_acc)
