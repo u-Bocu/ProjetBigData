@@ -1,0 +1,45 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .logo {
+  margin : 20px 20px 15px 20px;
+  width: 80%;
+  height : 80px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.spacer {
+  flex: 1
+}
+
+.icon {
+  margin: 0 10px 0 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  color: white;
+  transform: scale(2);
+}
+
+.menu-icon {
+  width: 35px;
+  vertical-align: -5px;
+}
+
+hr {
+  width:50%;
+}

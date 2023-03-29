@@ -1,0 +1,31 @@
+.quiz-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+}
+
+.quiz-card-content {
+  text-align: center;
+}
+
+.card-content-stats {
+  transform: scale(2);
+}
+
+mat-card-content {
+  height: 260px;
+}
+
+/* Stepper */
+mat-horizontal-stepper {
+  background-color: #fafafa;
+}
+
+/* Footer */
+mat-card-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+}
