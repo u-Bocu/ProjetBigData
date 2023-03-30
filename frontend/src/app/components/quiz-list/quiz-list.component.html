@@ -1,9 +1,12 @@
 <h1>Liste des quiz</h1>
 
+<mat-spinner [hidden]="!loading" class="loader"></mat-spinner>
+
 <mat-grid-list [gridCols]="{xs: 1, sm: 2, md: 3, lg: 3, xl: 3}" rowHeight="250px">
   <mat-grid-tile [colspan]="1" *ngFor="let quiz of quizzes">
 
-    <mat-card class="quiz-card" style="background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('{{quiz.lien_image}}');">
+    <mat-card class="quiz-card" routerLink = "/quiz/{{quiz.id}}"
+              [style.background-image]="'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),' + 'url('+quiz.lien_image+')'">
       <mat-card-header>
         <mat-card-title>
           {{quiz.label}}
