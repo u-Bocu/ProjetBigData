@@ -1,6 +1,13 @@
 <div class="container">
-  <br><br><br><br>
-  <mat-grid-list cols="4" rowHeight="2:1">
+  <mat-grid-list cols="3" rowHeight="5:3" *ngIf="!isLogged">
+    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile>
+      <button mat-raised-button routerLink="/theme-list" color="primary" class="start-game">Partie Normale</button>
+    </mat-grid-tile>
+    <mat-grid-tile></mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="4" rowHeight="5:3" *ngIf="isLogged">
     <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile>
       <button mat-raised-button routerLink="/theme-list" color="primary" class="start-game">Partie Normale</button>
@@ -10,7 +17,6 @@
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
   </mat-grid-list>
-  <br><br><br><br>
 </div>
 <div class="container mt-4">
   <div style="width: 50%; margin: 0 auto;">

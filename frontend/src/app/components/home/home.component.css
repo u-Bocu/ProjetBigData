@@ -1,4 +1,6 @@
 .start-game {
-  height: 340px;
+  height: 150px;
   width: 100%;
+  border-radius: 10px;
+  margin: 10px;
 }
