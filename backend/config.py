@@ -1,9 +1,9 @@
 # MySql connection details
 DB_CONFIG = {
-    'host': 'mysql-big-data-project.ctspgkoutz7z.us-east-1.rds.amazonaws.com',
+    'host': 'mysql-big-data-project.mysql.database.azure.com',
     'port': 3306,
-    'user': 'admin',
-    'password': 'adminadmin',
-    'db': 'bdd_quiz',
+    'user': 'adminadmin',
+    'password': 'P@ssw0rd',
+    'db': 'big_data_project',
 }
 

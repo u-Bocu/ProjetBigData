@@ -10,10 +10,10 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  public signup(username : string, password : string, mailAddress : string) : Observable<any> {
+  public signup(username : string, password : string, mail : string, age: number, sexe: string) : Observable<any> {
     return this.http.post(
       environment.API_URL + '/auth/sign-up',
-      { username : username , password : password, mail_address : mailAddress},
+      { username: username , password: password, mail: mail, age: age, sexe: sexe},
       {headers: environment.HEADERS}
     );
   }
@@ -27,11 +27,11 @@ export class AuthService {
     );
   }
 
-  public forgotPassword(mailAddress : string) : Observable<any>
+  public forgotPassword(mail : string) : Observable<any>
   {
     return this.http.post(
       environment.API_URL + '/auth/forgotpassword',
-      { mail_address : mailAddress },
+      { mail : mail },
       {headers : environment.HEADERS}
     );
   }

@@ -15,8 +15,9 @@ export class SignupComponent {
 
 isValid : boolean = false;
 patternUsername = "^[A-Za-z0-9_-]{4,15}$"
-patternmailAddress = "^[a-zA-Z0-9-._]{1,64}@[a-zA-Z0-9-._]{1,64}.[a-zA-Z0-9]{1,3}";
+patternMail = "^[a-zA-Z0-9-._]{1,64}@[a-zA-Z0-9-._]{1,64}.[a-zA-Z0-9]{1,3}";
 patternPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$";
+sexes = ['Homme', 'Femme', 'Autre'];
 
 md5HashedPassword : string = "";
 
@@ -25,9 +26,12 @@ hideConfirmPassword = true;
 
 form = this.fb.group({
   username : ['', Validators.required],
-  mailAddress : ['', Validators.required],
+  mail : ['', Validators.required],
   password : ['', Validators.required],
-  confirmPassword : ['', Validators.required]});
+  confirmPassword : ['', Validators.required],
+  age : ['', Validators.required],
+  sexe : ['', Validators.required]
+});
 
 
 constructor(
@@ -43,8 +47,7 @@ signup(): void
   if(this.form.value.username != "" && this.form.value.password != "" && this.form.value.confirmPassword != "")
   {
       this.md5HashedPassword = Md5.hashStr(this.form.value.password!);
-      this.authService.signup(this.form.value.username!, this.md5HashedPassword, this.form.value.mailAddress!)
-
+      this.authService.signup(this.form.value.username!, this.md5HashedPassword, this.form.value.mail!, parseInt(this.form.value.age!), this.form.value.sexe!)
       .subscribe(response =>
       {
           this.isValid = response.success
