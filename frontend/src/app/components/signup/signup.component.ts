@@ -48,7 +48,6 @@ signup(): void
   {
       this.md5HashedPassword = Md5.hashStr(this.form.value.password!);
       this.authService.signup(this.form.value.username!, this.md5HashedPassword, this.form.value.mail!, parseInt(this.form.value.age!), this.form.value.sexe!)
-
       .subscribe(response =>
       {
           this.isValid = response.success
