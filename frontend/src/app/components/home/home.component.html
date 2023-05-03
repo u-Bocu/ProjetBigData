@@ -3,10 +3,10 @@
   <mat-grid-list cols="4" rowHeight="2:1">
     <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile>
-      <img src="../../../assets/logo_quiz.png" alt="Slide 1" style="display: block; width: 80%;">
+      <button mat-raised-button routerLink="/theme-list" color="primary" class="start-game">Partie Normale</button>
     </mat-grid-tile>
     <mat-grid-tile>
-      <img src="../../../assets/logo_quiz.png" alt="Slide 1" style="display: block; width: 80%;">
+      <button mat-raised-button routerLink="/quiz/1" color="primary" class="start-game">Quiz aléatoire</button>
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
   </mat-grid-list>
@@ -16,7 +16,7 @@
   <div style="width: 50%; margin: 0 auto;">
     <carousel [interval]="interval" [showIndicators]="showIndicators">
       <slide>
-        <img src="../../../assets/logo_quiz.png" alt="Slide 1" style="display: block; width: 100%;">
+        <img src="https://via.placeholder.com/600x300?text=Slide+1" alt="Slide 1" style="display: block; width: 100%;">
       </slide>
       <slide>
         <img src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2" style="display: block; width: 100%;">

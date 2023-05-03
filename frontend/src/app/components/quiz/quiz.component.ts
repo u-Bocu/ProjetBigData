@@ -3,6 +3,9 @@ import { map } from 'rxjs/operators';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from "rxjs";
 import { Card } from "../../models/card.model";
+import {QuestionService} from "../../services/question.service";
+import {ActivatedRoute} from "@angular/router";
+import {Question} from "../../models/question";
 
 @Component({
   selector: 'app-quiz',
@@ -13,10 +16,22 @@ export class QuizComponent implements OnInit {
   nbColonnes?: number = 5;
   cards?: Observable<Array<Card>>;
   isLinear = false;
+  public questions: Array<Question> = [];
+  public loading: boolean = false;
 
   constructor(
-    private breakpointObserver: BreakpointObserver
-  ) { }
+    private breakpointObserver: BreakpointObserver,
+    private questionService: QuestionService,
+    private route: ActivatedRoute
+  ) {
+    const idQuiz: number = this.route.snapshot.paramMap.get('idQuiz') as unknown as number;
+    this.loading = true;
+    questionService.getQuestionsByQuiz(idQuiz).subscribe(response => {
+      this.questions = response.data.rows;
+      console.log(this.questions);
+      this.loading = false;
+    });
+  }
 
   ngOnInit() {
     /* Si l'écran est petit, passes les 'cards' de la taille standard vers une colonne */

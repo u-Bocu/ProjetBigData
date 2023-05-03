@@ -9,10 +9,13 @@ import { Theme } from "../../models/theme";
 })
 export class ThemeListComponent {
   public themes: Array<Theme> = [];
+  public loading: boolean = false;
 
   constructor(private themeService: ThemeService) {
+    this.loading = true;
     themeService.getThemes().subscribe(response => {
       this.themes = response.data.rows;
+      this.loading = false;
     });
   }
 }

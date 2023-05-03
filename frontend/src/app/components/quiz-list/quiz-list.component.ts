@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Quiz } from "../../models/quiz";
-import {QuizService} from "../../services/quiz.service";
+import { QuizService } from "../../services/quiz.service";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-quiz-list',
@@ -9,10 +10,17 @@ import {QuizService} from "../../services/quiz.service";
 })
 export class QuizListComponent {
   public quizzes: Array<Quiz> = [];
+  public loading: boolean = false;
 
-  constructor(private quizService: QuizService) {
-    quizService.getQuizzes().subscribe(response => {
+  constructor(
+    private quizService: QuizService,
+    private route: ActivatedRoute
+  ) {
+    const idTheme: number = this.route.snapshot.paramMap.get('idTheme') as unknown as number;
+    this.loading = true;
+    quizService.getQuizzes(idTheme).subscribe(response => {
       this.quizzes = response.data.rows;
+      this.loading = false;
     });
   }
 }

@@ -10,9 +10,10 @@ export class QuizService {
 
   constructor(private http: HttpClient) { }
 
-  public getQuizzes(): Observable<any> {
-    return this.http.get(
-      environment.API_URL + '/quiz',
+  public getQuizzes(idTheme?: number): Observable<any> {
+    const url = idTheme ? ('/quiz/' + idTheme) : '/quiz';
+    return  this.http.get(
+      environment.API_URL + url,
       {headers: environment.HEADERS}
     );
   }

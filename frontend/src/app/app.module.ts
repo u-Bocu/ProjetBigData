@@ -31,6 +31,9 @@ import { ThemeListComponent } from './components/theme-list/theme-list.component
 import { HomeComponent } from './components/home/home.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { GridColsDirective } from './directives/grid-cols.directive';
+import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
+import { GridColspanDirective } from './directives/grid-colspan.directive';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -44,30 +47,33 @@ import { GridColsDirective } from './directives/grid-cols.directive';
     QuizListComponent,
     ThemeListComponent,
     HomeComponent,
-    GridColsDirective
+    GridColsDirective,
+    QuizFormComponent,
+    GridColspanDirective
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    CarouselModule.forRoot(),
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatInputModule,
-    MatSelectModule,
-    MatStepperModule,
-    MatRadioModule,
-    ToastrModule.forRoot({}),
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        CarouselModule.forRoot(),
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatInputModule,
+        MatSelectModule,
+        MatStepperModule,
+        MatRadioModule,
+        ToastrModule.forRoot({}),
+        ReactiveFormsModule,
+        MatProgressSpinnerModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
