@@ -34,6 +34,12 @@ import { GridColsDirective } from './directives/grid-cols.directive';
 import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 import { GridColspanDirective } from './directives/grid-colspan.directive';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { ProfileComponent } from './components/profile/profile.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import { ProfileUserPersonalInfosComponent } from './components/profile-user/profile-user-personal-infos/profile-user-personal-infos.component';
+import { ProfileUserQuizHistoryComponent } from './components/profile-user/profile-user-quiz-history/profile-user-quiz-history.component';
+import { ProfileUserQuizCreatedComponent } from './components/profile-user/profile-user-quiz-created/profile-user-quiz-created.component';
+import { ProfileUserStatisticsComponent } from './components/profile-user/profile-user-statistics/profile-user-statistics.component';
 
 @NgModule({
   declarations: [
@@ -49,31 +55,37 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     HomeComponent,
     GridColsDirective,
     QuizFormComponent,
-    GridColspanDirective
+    GridColspanDirective,
+    ProfileComponent,
+    ProfileUserPersonalInfosComponent,
+    ProfileUserQuizHistoryComponent,
+    ProfileUserQuizCreatedComponent,
+    ProfileUserStatisticsComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        CarouselModule.forRoot(),
-        MatGridListModule,
-        MatCardModule,
-        MatMenuModule,
-        MatIconModule,
-        MatButtonModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatSidenavModule,
-        MatListModule,
-        MatInputModule,
-        MatSelectModule,
-        MatStepperModule,
-        MatRadioModule,
-        ToastrModule.forRoot({}),
-        ReactiveFormsModule,
-        MatProgressSpinnerModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    CarouselModule.forRoot(),
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatStepperModule,
+    MatRadioModule,
+    ToastrModule.forRoot({}),
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatTabsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
