@@ -14,7 +14,6 @@
         </mat-form-field>
       </div>
 
-
       <div class="form-group">
         <mat-form-field style="width: 100%;">
           <mat-label>Adresse mail</mat-label>
@@ -28,9 +27,8 @@
         </mat-form-field>
       </div>
 
-
       <div class="form-group">
-        <mat-form-field style="width: 100%;">
+        <mat-form-field style="width: 45%;">
           <mat-label>Mot de passe</mat-label>
           <input matInput autocomplete="on" formControlName="password" [type]="hidePassword ? 'password' : 'text'" [pattern]="patternPassword">
           <mat-error *ngIf="form.controls['password'].hasError('required')">
@@ -44,10 +42,8 @@
               <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
             </button>
         </mat-form-field>
-      </div>
-      <div class="form-group">
-        <mat-form-field style="width: 100%;">
 
+        <mat-form-field style="width: 45%;">
           <mat-label>Confirmer votre mot de passe</mat-label>
           <input matInput autocomplete="on" formControlName="confirmPassword" [type]="hideConfirmPassword ? 'password' : 'text'" [pattern]="patternPassword">
           <mat-error *ngIf="form.controls['confirmPassword'].hasError('required')">
@@ -57,14 +53,14 @@
             Saisissez un mot de passe contenant au moins : (8 caractères, 1 majuscule, 1 minuscule, 1 caractère spécial, 1 chiffre).
           </mat-error>
 
-            <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" type="button">
-              <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
+          <button mat-icon-button matSuffix (click)="hideConfirmPassword = !hideConfirmPassword" type="button">
+            <mat-icon>{{hideConfirmPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
         </mat-form-field>
       </div>
 
       <div class="form-group">
-        <mat-form-field style="width: 100%;">
+        <mat-form-field style="width: 45%;">
           <mat-label>Age</mat-label>
           <input matInput type="number" autocomplete="on" formControlName="age">
           <mat-error *ngIf="form.controls['age'].hasError('required')">
@@ -74,10 +70,8 @@
             Veuillez saisir un âge valide.
           </mat-error>
         </mat-form-field>
-      </div>
 
-      <div class="form-group">
-        <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-form-field appearance="fill" style="width: 45%;">
           <mat-label>Genre</mat-label>
           <mat-select formControlName="sexe">
             <mat-option value="Homme">Homme</mat-option>
