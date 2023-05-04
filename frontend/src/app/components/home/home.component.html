@@ -1,19 +1,13 @@
 <div class="container">
-  <mat-grid-list cols="3" rowHeight="5:3" *ngIf="!isLogged">
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile>
-      <button mat-raised-button routerLink="/theme-list" color="primary" class="start-game">Partie Normale</button>
-    </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
-  </mat-grid-list>
-
-  <mat-grid-list cols="4" rowHeight="5:3" *ngIf="isLogged">
+  <mat-grid-list cols="4" rowHeight="5:3">
     <mat-grid-tile></mat-grid-tile>
     <mat-grid-tile>
       <button mat-raised-button routerLink="/theme-list" color="primary" class="start-game">Partie Normale</button>
     </mat-grid-tile>
     <mat-grid-tile>
-      <button mat-raised-button routerLink="/quiz/1" color="primary" class="start-game">Quiz aléatoire</button>
+      <button mat-raised-button routerLink="/quiz/1" color="primary" class="start-game" [disabled]="!isLogged">
+        Quiz aléatoire <mat-icon class="menu-icon" *ngIf="!isLogged">lock</mat-icon>
+      </button>
     </mat-grid-tile>
     <mat-grid-tile></mat-grid-tile>
   </mat-grid-list>
