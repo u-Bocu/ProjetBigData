@@ -8,11 +8,11 @@
     <hr>
     <mat-nav-list>
       <a mat-list-item routerLink="/home"><mat-icon fontIcon="quiz" class="menu-icon"></mat-icon>Jouer</a>
-      <a mat-list-item routerLink="/quiz/create" [disabled]="!isLogged">
+      <a mat-list-item [routerLink]="isLogged ? '/quiz/create' : '/login'" [disabled]="!isLogged">
         <mat-icon fontIcon="library_add" class="menu-icon"></mat-icon>Créer un quiz
         <mat-icon class="menu-icon" *ngIf="!isLogged">lock</mat-icon>
       </a>
-      <a mat-list-item routerLink="/profile" [disabled]="!isLogged">
+      <a mat-list-item [routerLink]="isLogged ? '/profile' : '/login'" [disabled]="!isLogged">
         <mat-icon fontIcon="account_box" class="menu-icon"></mat-icon>Profil
         <mat-icon class="menu-icon" *ngIf="!isLogged">lock</mat-icon>
       </a>
