@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile-user-quiz-created.component.css']
 })
 export class ProfileUserQuizCreatedComponent {
+  public loading: boolean = false;
 
+  constructor() {}
 }
