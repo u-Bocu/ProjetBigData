@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {Theme} from "../../../models/theme";
-import {ThemeService} from "../../../services/theme.service";
+import { User } from "../../../models/user";
+import { UserService } from "../../../services/user.service";
+import {LocalStorageService} from "../../../services/local-storage.service";
 
 @Component({
   selector: 'app-profile-user-personal-infos',
@@ -8,14 +9,19 @@ import {ThemeService} from "../../../services/theme.service";
   styleUrls: ['./profile-user-personal-infos.component.css']
 })
 export class ProfileUserPersonalInfosComponent {
-  //public themes: Array<Theme> = [];
+  public user?: User;
+  public userId: number;
   public loading: boolean = false;
 
-  constructor(private themeService: ThemeService) {
+  constructor(
+    private userService: UserService,
+    private localStorageService: LocalStorageService
+  ) {
     this.loading = true;
-    //themeService.getThemes().subscribe(response => {
-    //  this.themes = response.data.rows;
+    this.userId = parseInt(this.localStorageService.getData('user_id'));
+    userService.getUser(this.userId).subscribe(response => {
+      this.user = response.data.rows;
       this.loading = false;
-    //});
+    });
   }
 }
