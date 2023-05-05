@@ -17,7 +17,7 @@ def get_quizzes():
         cursor = mysqldb.cursor(dictionary=True)
         cursor.execute(''' SELECT * FROM quiz;''')
 
-        rows = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
+        rows = cursor.fetchall()
         count = cursor.rowcount
 
         cursor.close()
@@ -48,7 +48,7 @@ def get_quizzes_by_theme(id_theme):
         cursor = mysqldb.cursor(dictionary=True)
         cursor.execute(''' SELECT * FROM quiz WHERE quiz.id_theme = %s;''', (id_theme,))
 
-        rows = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
+        rows = cursor.fetchall()
         count = cursor.rowcount
 
         cursor.close()
