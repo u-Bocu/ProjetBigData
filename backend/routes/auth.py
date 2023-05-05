@@ -51,7 +51,7 @@ def add_user_to_db(username, password, mail, age, sexe):
     if not does_user_exist(username):
         try:
             mysqldb = mysql.connector.connect(**DB_CONFIG)
-            cursor = mysqldb.cursor()
+            cursor = mysqldb.cursor(dictionary=True)
 
             cursor.execute(f''' INSERT INTO users (login, password, mail, age, sexe, id_role) 
                         VALUES ('{username}', '{password}', '{mail}', '{age}', '{sexe}', 1);''')
@@ -70,7 +70,7 @@ def does_user_exist(username):
     err = True
     try:
         mysqldb = mysql.connector.connect(**DB_CONFIG)
-        cursor = mysqldb.cursor()
+        cursor = mysqldb.cursor(dictionary=True)
         cursor.execute(f''' SELECT login FROM users WHERE login = '{username}' ''')
 
         if cursor.fetchone() is None:
@@ -88,7 +88,7 @@ def check_user_password_in_db(username, password):
     if does_user_exist(username):
         try:
             mysqldb = mysql.connector.connect(**DB_CONFIG)
-            cursor = mysqldb.cursor()
+            cursor = mysqldb.cursor(dictionary=True)
             cursor.execute(f''' SELECT password FROM users WHERE login='{username}'  ''')
 
             if password == cursor.fetchone()[0]:
@@ -107,7 +107,7 @@ def get_user_with_username(username):
     if does_user_exist(username):
         try:
             mysqldb = mysql.connector.connect(**DB_CONFIG)
-            cursor = mysqldb.cursor()
+            cursor = mysqldb.cursor(dictionary=True)
             cursor.execute(f''' SELECT id, login FROM users WHERE login='{username}'  ''')
 
             user = cursor.fetchone()

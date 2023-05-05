@@ -28,3 +28,7 @@ h1 {
   bottom:0;
   position:absolute;
 }
+
+mat-form-field {
+  width: 80%;
+}

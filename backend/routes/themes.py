@@ -14,7 +14,7 @@ def get_themes():
 
     try:
         mysqldb = mysql.connector.connect(**DB_CONFIG)
-        cursor = mysqldb.cursor()
+        cursor = mysqldb.cursor(dictionary=True)
         cursor.execute(''' SELECT * FROM themes;''')
 
         rows = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]

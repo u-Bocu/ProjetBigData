@@ -14,7 +14,7 @@ def get_user_by_id(id_user):
 
     try:
         mysqldb = mysql.connector.connect(**DB_CONFIG)
-        cursor = mysqldb.cursor()
+        cursor = mysqldb.cursor(dictionary=True)
         cursor.execute(''' SELECT * FROM users WHERE id = %s;''', (id_user,))
 
         rows = cursor.fetchone()

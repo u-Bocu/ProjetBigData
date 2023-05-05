@@ -14,7 +14,7 @@ def get_quizzes():
 
     try:
         mysqldb = mysql.connector.connect(**DB_CONFIG)
-        cursor = mysqldb.cursor()
+        cursor = mysqldb.cursor(dictionary=True)
         cursor.execute(''' SELECT * FROM quiz;''')
 
         rows = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
@@ -45,7 +45,7 @@ def get_quizzes_by_theme(id_theme):
 
     try:
         mysqldb = mysql.connector.connect(**DB_CONFIG)
-        cursor = mysqldb.cursor()
+        cursor = mysqldb.cursor(dictionary=True)
         cursor.execute(''' SELECT * FROM quiz WHERE quiz.id_theme = %s;''', (id_theme,))
 
         rows = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
