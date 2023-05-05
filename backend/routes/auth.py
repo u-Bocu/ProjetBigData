@@ -57,10 +57,6 @@ def add_user_to_db(username, password, mail, age, sexe):
                         VALUES ('{username}', '{password}', '{mail}', '{age}', '{sexe}', 1);''')
             mysqldb.commit()
 
-            # Fill tokens table with empty values
-            # cursor.execute(f''' INSERT INTO tokens (tokens, timestamp) VALUES ("", "");''')
-            # mysqldb.commit()
-
             err = True
             cursor.close()
 
