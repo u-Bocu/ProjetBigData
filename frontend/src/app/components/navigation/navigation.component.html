@@ -37,7 +37,7 @@
       <a routerLink="/login" *ngIf="!isLogged">
         <mat-icon fontIcon="login" class="icon"></mat-icon>
       </a>
-      <span *ngIf="isLogged">{{username}}</span>
+      <span *ngIf="isLogged">{{username}} <mat-icon class="account-icon">account_circle</mat-icon></span>
     </mat-toolbar>
 
     <!-- Différentes pages avec le routing -->

@@ -39,6 +39,12 @@
   vertical-align: -5px;
 }
 
+.account-icon {
+  font-size: 25px;
+  width: 30px;
+  vertical-align: -5px;
+}
+
 hr {
   width:50%;
 }
