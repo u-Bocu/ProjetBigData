@@ -28,7 +28,6 @@ export class QuizComponent implements OnInit {
     this.loading = true;
     questionService.getQuestionsByQuiz(idQuiz).subscribe(response => {
       this.questions = response.data.rows;
-      console.log(this.questions);
       this.loading = false;
     });
   }

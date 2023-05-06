@@ -9,11 +9,12 @@ h1 {
 }
 
 .quiz-card mat-card-header {
-  width: 90%;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .quiz-card mat-card-title {

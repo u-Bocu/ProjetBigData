@@ -91,7 +91,7 @@ def check_user_password_in_db(username, password):
             cursor = mysqldb.cursor(dictionary=True)
             cursor.execute(f''' SELECT password FROM users WHERE login='{username}'  ''')
 
-            if password == cursor.fetchone()[0]:
+            if password == cursor.fetchone()['password']:
                 err = True
 
             cursor.close()

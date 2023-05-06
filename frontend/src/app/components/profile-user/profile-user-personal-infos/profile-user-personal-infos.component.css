@@ -27,6 +27,7 @@ h1 {
   top:0;
   bottom:0;
   position:absolute;
+  z-index: 5;
 }
 
 mat-form-field {
