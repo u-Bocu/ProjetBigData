@@ -9,6 +9,13 @@
   margin: 2px;
 }
 
+.start-game-disabled {
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  margin: 2px;
+}
+
 carousel {
   width: 100%;
 }
