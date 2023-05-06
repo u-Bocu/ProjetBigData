@@ -1,10 +1,12 @@
 from flask import Flask
 from flask_cors import CORS
 
+from routes.roles import roles
 from routes.themes import themes
 from routes.quiz import quiz
 from routes.questions import questions
 from routes.auth import auth
+from routes.users import users
 
 
 def create_app():
@@ -16,6 +18,8 @@ def create_app():
     app.register_blueprint(quiz, url_prefix='/api/quiz')
     app.register_blueprint(questions, url_prefix='/api/questions')
     app.register_blueprint(auth, url_prefix='/api/auth')
+    app.register_blueprint(users, url_prefix='/api/users')
+    app.register_blueprint(roles, url_prefix='/api/roles')
 
     if __name__ == "__main__":
         app.run(host="127.0.0.1", port=8080, debug=True)

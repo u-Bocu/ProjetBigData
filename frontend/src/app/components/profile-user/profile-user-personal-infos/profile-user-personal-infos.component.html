@@ -1,0 +1,86 @@
+<mat-spinner [hidden]="!loading" class="loader"></mat-spinner>
+
+<mat-card class="personal-infos-card">
+  <mat-card-content class="personal-infos-card-content">
+    <form [formGroup]="form" class="personal-infos-form">
+      <mat-grid-list [gridCols]="{xs: 1, sm: 2, md: 3, lg: 3, xl: 3}" rowHeight="80px">
+        <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
+          <mat-form-field>
+            <mat-label>Identifiant</mat-label>
+            <input matInput autocomplete="on" formControlName="username" [pattern]="patternUsername" [value]="user?.login">
+            <mat-error *ngIf="form.controls['username'].hasError('required')">
+              Veuillez saisir un nom d'utilisateur.
+            </mat-error>
+            <mat-error *ngIf="form.controls['username'].hasError('pattern')">
+              Veuillez saisir un nom d'utilisateur sans caractère spéciaux autre que '-' et '_'.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
+          <mat-form-field>
+            <mat-label>Adresse mail</mat-label>
+            <input matInput autocomplete="on" formControlName="mail" [pattern]="patternMail">
+            <mat-error *ngIf="form.controls['mail'].hasError('required')">
+              Veuillez saisir une adresse email.
+            </mat-error>
+            <mat-error *ngIf="form.controls['mail'].hasError('pattern')">
+              Veuillez saisir une adresse email valide.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
+          <mat-form-field>
+            <mat-label>Age</mat-label>
+            <input matInput type="number" autocomplete="on" formControlName="age">
+            <mat-error *ngIf="form.controls['age'].hasError('required')">
+              Veuillez saisir un âge.
+            </mat-error>
+            <mat-error *ngIf="form.controls['age'].hasError('pattern')">
+              Veuillez saisir un âge valide.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
+          <mat-form-field appearance="fill">
+            <mat-label>Genre</mat-label>
+            <mat-select formControlName="sexe">
+              <mat-option value="Homme">Homme</mat-option>
+              <mat-option value="Femme">Femme</mat-option>
+              <mat-option value="Autre">Autre</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['sexe'].hasError('required')">
+              Veuillez saisir un genre.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
+          <mat-form-field appearance="fill">
+            <mat-label>Rôle</mat-label>
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role.id">{{role.label}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['role'].hasError('required')">
+              Veuillez saisir un rôle.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
+          <mat-form-field appearance="fill">
+            <mat-label>Thème préféré</mat-label>
+            <mat-select formControlName="theme_pref">
+              <mat-option *ngFor="let theme of themes" [value]="theme.id">{{theme.label}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['theme_pref'].hasError('required')">
+              Veuillez saisir un thème préféré.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </form>
+  </mat-card-content>
+</mat-card>

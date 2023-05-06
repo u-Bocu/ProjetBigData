@@ -1,35 +1,41 @@
 <div class="container">
-  <br><br><br><br>
-  <mat-grid-list cols="4" rowHeight="2:1">
-    <mat-grid-tile></mat-grid-tile>
-    <mat-grid-tile>
+  <mat-grid-list [gridCols]="{xs: 2, sm: 2, md: 4, lg: 4, xl: 4}" rowHeight="5:5">
+    <mat-grid-tile [gridColspan]="{xs: 0, sm: 0, md: 1, lg: 1, xl: 1}"></mat-grid-tile>
+    <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
       <button mat-raised-button routerLink="/theme-list" color="primary" class="start-game">Partie Normale</button>
     </mat-grid-tile>
-    <mat-grid-tile>
-      <button mat-raised-button routerLink="/quiz/1" color="primary" class="start-game">Quiz aléatoire</button>
+    <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
+      <a routerLink="/login" class="start-game" *ngIf="!isLogged">
+        <button mat-raised-button routerLink="/quiz/1" color="primary" class="start-game" disabled>
+          Quiz aléatoire <mat-icon class="menu-icon">lock</mat-icon>
+        </button>
+      </a>
+      <button mat-raised-button routerLink="/quiz/1" color="primary" class="start-game" *ngIf="isLogged">
+        Quiz aléatoire
+      </button>
     </mat-grid-tile>
-    <mat-grid-tile></mat-grid-tile>
+    <mat-grid-tile [gridColspan]="{xs: 0, sm: 0, md: 1, lg: 1, xl: 1}"></mat-grid-tile>
+
+    <mat-grid-tile [gridColspan]="{xs: 0, sm: 0, md: 1, lg: 1, xl: 1}"></mat-grid-tile>
+    <mat-grid-tile [gridColspan]="{xs: 2, sm: 2, md: 2, lg: 2, xl: 2}">
+      <carousel [interval]="interval" [showIndicators]="showIndicators">
+        <slide>
+          <img src="https://via.placeholder.com/600x300?text=Slide+1" alt="Slide 1" style="display: block; width: 100%;">
+        </slide>
+        <slide>
+          <img src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2" style="display: block; width: 100%;">
+        </slide>
+        <slide>
+          <img src="https://via.placeholder.com/600x300?text=Slide+3" alt="Slide 3" style="display: block; width: 100%;">
+        </slide>
+        <slide>
+          <img src="https://via.placeholder.com/600x300?text=Slide+4" alt="Slide 3" style="display: block; width: 100%;">
+        </slide>
+        <slide>
+          <img src="https://via.placeholder.com/600x300?text=Slide+5" alt="Slide 3" style="display: block; width: 100%;">
+        </slide>
+      </carousel>
+    </mat-grid-tile>
+    <mat-grid-tile [gridColspan]="{xs: 0, sm: 0, md: 1, lg: 1, xl: 1}"></mat-grid-tile>
   </mat-grid-list>
-  <br><br><br><br>
-</div>
-<div class="container mt-4">
-  <div style="width: 50%; margin: 0 auto;">
-    <carousel [interval]="interval" [showIndicators]="showIndicators">
-      <slide>
-        <img src="https://via.placeholder.com/600x300?text=Slide+1" alt="Slide 1" style="display: block; width: 100%;">
-      </slide>
-      <slide>
-        <img src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2" style="display: block; width: 100%;">
-      </slide>
-      <slide>
-        <img src="https://via.placeholder.com/600x300?text=Slide+3" alt="Slide 3" style="display: block; width: 100%;">
-      </slide>
-      <slide>
-        <img src="https://via.placeholder.com/600x300?text=Slide+4" alt="Slide 3" style="display: block; width: 100%;">
-      </slide>
-      <slide>
-        <img src="https://via.placeholder.com/600x300?text=Slide+5" alt="Slide 3" style="display: block; width: 100%;">
-      </slide>
-    </carousel>
-  </div>
 </div>

@@ -14,10 +14,10 @@ def get_question_by_quiz(id_quiz):
 
     try:
         mysqldb = mysql.connector.connect(**DB_CONFIG)
-        cursor = mysqldb.cursor()
+        cursor = mysqldb.cursor(dictionary=True)
         cursor.execute(''' SELECT * FROM questions WHERE questions.id_quiz = %s;''', (id_quiz,))
 
-        rows = [dict((cursor.description[i][0], value) for i, value in enumerate(row)) for row in cursor.fetchall()]
+        rows = cursor.fetchall()
         count = cursor.rowcount
 
         cursor.close()
