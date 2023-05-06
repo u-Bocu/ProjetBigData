@@ -56,6 +56,30 @@
             </mat-error>
           </mat-form-field>
         </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
+          <mat-form-field appearance="fill">
+            <mat-label>Rôle</mat-label>
+            <mat-select formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role.id">{{role.label}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['role'].hasError('required')">
+              Veuillez saisir un rôle.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
+          <mat-form-field appearance="fill">
+            <mat-label>Thème préféré</mat-label>
+            <mat-select formControlName="theme_pref">
+              <mat-option *ngFor="let theme of themes" [value]="theme.id">{{theme.label}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['theme_pref'].hasError('required')">
+              Veuillez saisir un thème préféré.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
       </mat-grid-list>
     </form>
   </mat-card-content>
