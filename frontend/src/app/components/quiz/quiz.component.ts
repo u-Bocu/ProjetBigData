@@ -30,8 +30,6 @@ export class QuizComponent {
           question.reponses = response.data.rows;
         });
       })
-
-      console.log(this.questions);
       this.loading = false;
     });
   }

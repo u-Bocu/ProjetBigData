@@ -22,16 +22,18 @@
 
             <mat-grid-tile class="reponse" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1" *ngFor="let reponse of question.reponses; let i = index">
               <p [ngSwitch]="i">
-                <button mat-mini-fab *ngSwitchCase="0">1</button>
-                <button mat-mini-fab *ngSwitchCase="1">2</button>
-                <button mat-mini-fab *ngSwitchCase="2">3</button>
-                <button mat-mini-fab *ngSwitchCase="3">4</button>
+                <button mat-mini-fab *ngSwitchCase="0" class="mini-fab">1</button>
+                <button mat-mini-fab *ngSwitchCase="1" class="mini-fab">2</button>
+                <button mat-mini-fab *ngSwitchCase="2" class="mini-fab">3</button>
+                <button mat-mini-fab *ngSwitchCase="3" class="mini-fab">4</button>
                 {{reponse.label}}
               </p>
             </mat-grid-tile>
 
-            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 2, xl: 2}" rowspan="1">
-              <button mat-raised-button color="primary" matStepperNext>Valider</button>
+            <mat-grid-tile class="validation" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 2, xl: 2}" rowspan="1">
+              <button mat-raised-button color="primary" matStepperNext>
+                <mat-icon>mic</mat-icon>Votre réponse
+              </button>
             </mat-grid-tile>
 
           </mat-grid-list>

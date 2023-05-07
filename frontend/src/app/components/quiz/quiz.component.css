@@ -17,11 +17,21 @@
 
 .reponse {
   font-size: 20px;
+  text-align: start;
 }
 
-.reponse-icon {
-  width: 35px;
-  vertical-align: -5px;
+.reponse p {
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.mini-fab {
+  margin-right: 5px;
+}
+
+.validation button {
+  align-self: flex-end;
 }
 
 .loader {
