@@ -50,8 +50,8 @@ export class LoginComponent {
             this.toastr.success('Bienvenue ' + this.form.value.username!, 'Succès', {
               positionClass: 'test'
             });
-            this.localStorageService.saveData('user_id', response.data[0]);
-            this.localStorageService.saveData('username', response.data[1]);
+            this.localStorageService.saveData('user_id', response.data.id);
+            this.localStorageService.saveData('username', response.data.login);
             this.eventService.emitRefreshNavigationEvent();
             this.router.navigate(['/quiz']).then(r => r);
           }

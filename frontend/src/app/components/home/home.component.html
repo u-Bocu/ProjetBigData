@@ -6,7 +6,7 @@
     </mat-grid-tile>
     <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}">
       <a routerLink="/login" class="start-game" *ngIf="!isLogged">
-        <button mat-raised-button routerLink="/quiz/1" color="primary" class="start-game" disabled>
+        <button mat-raised-button routerLink="/quiz/1" color="primary" class="start-game-disabled" disabled>
           Quiz aléatoire <mat-icon class="menu-icon">lock</mat-icon>
         </button>
       </a>

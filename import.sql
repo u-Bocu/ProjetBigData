@@ -25,7 +25,7 @@ VALUES (1, 'Animaux', 'https://dinoanimals.com/wp-content/uploads/2020/10/Animal
 # Quiz
 INSERT
 INTO quiz (id, label, id_statut, date_creation, id_theme, id_user, lien_image)
-VALUES (1, 'Les corbeaux', 1, CURDATE(), 1, 1, 'https://exemple.com/les_corbeaux.jpg'),
+VALUES (1, 'Les corbeaux', 1, CURDATE(), 1, 1, ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg'),
        (2, 'Les ruminants', 1, CURDATE(), 1, 1, 'https://exemple.com/ruminants.jpg'),
        (3, 'Les fables de La Fontaine', 1, CURDATE(), 2, 1, 'https://exemple.com/fables_la_fontaine.jpg'),
        (4, 'Elvis Presley', 1, CURDATE(), 2, 1, 'https://exemple.com/elvis_presley.jpg'),
@@ -43,21 +43,21 @@ VALUES (1, 'Les corbeaux', 1, CURDATE(), 1, 1, 'https://exemple.com/les_corbeaux
 # Questions
 -- Les corbeaux
 INSERT INTO questions (id, id_quiz, question, lien_image, date_creation)
-VALUES (1, 1, 'Quel est l\'oiseau considéré comme le plus intelligent ?', 'https://exemple.com/les_corbeaux.jpg',
+VALUES (1, 1, 'Quel est l\'oiseau considéré comme le plus intelligent ?', ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg',
         CURDATE()),
-       (2, 1, 'Comment les corbeaux communiquent-ils entre eux ?', 'https://exemple.com/les_corbeaux.jpg', CURDATE()),
-       (3, 1, 'Quelle est la particularité du corbeau calédonien ?', 'https://exemple.com/les_corbeaux.jpg', CURDATE()),
-       (4, 1, 'Quel est le régime alimentaire des corbeaux ?', 'https://exemple.com/les_corbeaux.jpg', CURDATE()),
-       (5, 1, 'Comment les corbeaux chassent-ils leurs proies ?', 'https://exemple.com/les_corbeaux.jpg', CURDATE()),
-       (6, 1, 'Quelle est la durée de vie moyenne d\'un corbeau ?', 'https://exemple.com/les_corbeaux.jpg', CURDATE()),
-       (7, 1, 'Comment les corbeaux se protègent-ils des prédateurs ?', 'https://exemple.com/les_corbeaux.jpg',
+       (2, 1, 'Comment les corbeaux communiquent-ils entre eux ?', ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg', CURDATE()),
+       (3, 1, 'Quelle est la particularité du corbeau calédonien ?', ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg', CURDATE()),
+       (4, 1, 'Quel est le régime alimentaire des corbeaux ?', ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg', CURDATE()),
+       (5, 1, 'Comment les corbeaux chassent-ils leurs proies ?', ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg', CURDATE()),
+       (6, 1, 'Quelle est la durée de vie moyenne d\'un corbeau ?', ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg', CURDATE()),
+       (7, 1, 'Comment les corbeaux se protègent-ils des prédateurs ?', ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg',
         CURDATE()),
-       (8, 1, 'Quel est le rôle des corbeaux dans les mythes et légendes ?', 'https://exemple.com/les_corbeaux.jpg',
+       (8, 1, 'Quel est le rôle des corbeaux dans les mythes et légendes ?', ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg',
         CURDATE()),
-       (9, 1, 'Quelle est l\'espèce de corbeau la plus répandue en France ?', 'https://exemple.com/les_corbeaux.jpg',
+       (9, 1, 'Quelle est l\'espèce de corbeau la plus répandue en France ?', ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg',
         CURDATE()),
        (10, 1, 'Comment les corbeaux s\'adaptent-ils aux changements climatiques ?',
-        'https://exemple.com/les_corbeaux.jpg',
+        ',https://cdn-s-www.lejsl.com/images/E45D341C-E0D5-4517-8CC0-F4301D0FAAFD/NW_raw/le-corbeau-continue-a-abimer-les-vehicules-cette-fois-dans-le-voisinage-photo-dr-1572428984.jpg',
         CURDATE());
 -- Les ruminants
 INSERT INTO questions (id, id_quiz, question, lien_image, date_creation)
