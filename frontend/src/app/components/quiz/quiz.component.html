@@ -1,38 +1,43 @@
+<mat-spinner [hidden]="!loading" class="loader"></mat-spinner>
+
 <div class="grid-container">
   <h1 class="mat-h1">Quiz</h1>
 
   <mat-horizontal-stepper linear="true" labelPosition="bottom">
 
-    <mat-step editable="false" *ngFor="let card of cards | async">
-      <mat-grid-list [cols]="nbColonnes" rowHeight="200px">
-        <mat-grid-tile [colspan]="card.cols" [rowspan]="card.rows">
+    <mat-step editable="false" *ngFor="let question of questions">
+      <mat-card class="quiz-card">
+        <mat-card-header>
+          <mat-card-title>
+            <h1>{{question.question}}</h1>
+          </mat-card-title>
+        </mat-card-header>
 
-          <mat-card class="quiz-card">
-            <mat-card-header>
-              <mat-card-title>
-                {{card.title}}
-              </mat-card-title>
-            </mat-card-header>
+        <mat-card-content class="quiz-card-content">
+          <mat-grid-list [gridCols]="{xs: 1, sm: 1, md: 1, lg: 3, xl: 3}" rowHeight="120px">
 
-            <mat-card-content class="quiz-card-content">
-              <mat-grid-list cols="5" rowHeight="100px" *ngIf="card.title != ''">
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="3">
+              <img src="{{question.lien_image}}" class="image_question" alt="Image_Question">
+            </mat-grid-tile>
 
-                <div *ngIf="card.title == 'nbScansChartComponent'">
-                  <mat-grid-tile class="card-content-stats" colspan="2">
-                    <mat-icon>compost</mat-icon>
-                  </mat-grid-tile>
-                </div>
+            <mat-grid-tile class="reponse" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1" *ngFor="let reponse of question.reponses; let i = index">
+              <p [ngSwitch]="i">
+                <button mat-mini-fab *ngSwitchCase="0">1</button>
+                <button mat-mini-fab *ngSwitchCase="1">2</button>
+                <button mat-mini-fab *ngSwitchCase="2">3</button>
+                <button mat-mini-fab *ngSwitchCase="3">4</button>
+                {{reponse.label}}
+              </p>
+            </mat-grid-tile>
 
-              </mat-grid-list>
-            </mat-card-content>
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 2, xl: 2}" rowspan="1">
+              <button mat-raised-button color="primary" matStepperNext>Valider</button>
+            </mat-grid-tile>
 
-            <mat-card-footer>
-              <button mat-raised-button color="primary" matStepperNext>Next</button>
-            </mat-card-footer>
-          </mat-card>
+          </mat-grid-list>
+        </mat-card-content>
+      </mat-card>
 
-        </mat-grid-tile>
-      </mat-grid-list>
     </mat-step>
 
   </mat-horizontal-stepper>

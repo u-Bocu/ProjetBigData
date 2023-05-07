@@ -1,31 +1,39 @@
 .quiz-card {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  right: 15px;
-  bottom: 15px;
+  padding: 20px;
 }
 
 .quiz-card-content {
   text-align: center;
+  margin-top: 30px;
 }
 
-.card-content-stats {
-  transform: scale(2);
+.image_question {
+  width: auto;
+  height: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50px;
 }
 
-mat-card-content {
-  height: 260px;
+.reponse {
+  font-size: 20px;
+}
+
+.reponse-icon {
+  width: 35px;
+  vertical-align: -5px;
+}
+
+.loader {
+  margin:auto;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  position:absolute;
 }
 
 /* Stepper */
 mat-horizontal-stepper {
   background-color: #fafafa;
-}
-
-/* Footer */
-mat-card-footer {
-  padding: 16px;
-  display: flex;
-  justify-content: flex-end;
 }
