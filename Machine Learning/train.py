@@ -7,12 +7,14 @@ from libs.waveletTransformer.waveletTransformer import WaveletTransformer
 train_input, train_output = load_dataset.load_train_dataset()
 test_input, test_output = load_dataset.load_test_dataset()
 
-vocab_size = train_output.nunique()
+vocab_size = len(train_output.unique())
 print("Vocab size: ", vocab_size)
 
-model = DummyModel(vocab_size)
+train_input = [tf.convert_to_tensor(x, dtype=tf.float32) for x in train_input]
 
-model.compile(loss='categorical_corssentropy', optimizer='adam', metrics=['accuracy'])
+model = WaveletTransformer(3, 128, 4*128, 8, vocab_size, vocab_size, 200)
+
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 history = model.fit(train_input, train_output, epochs=10)
 test_loss, test_acc = model.evaluate(test_input, test_output)

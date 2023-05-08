@@ -39,7 +39,6 @@ class WaveletTransformer(Model):
     def call(self, x):
         # Prepare wavelets
         x = self.conv1(x)
-        x, cD = tf.signal.dwt(x, wavelet='haar', axis=-2)
 
         # Add encoding position
         seq_len = tf.shape(x)[1]
