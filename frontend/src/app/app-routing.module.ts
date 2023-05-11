@@ -9,18 +9,20 @@ import { HomeComponent } from "./components/home/home.component";
 import { ThemeListComponent } from "./components/theme-list/theme-list.component";
 import { QuizListComponent } from "./components/quiz-list/quiz-list.component";
 import { QuizFormComponent } from "./components/quiz-form/quiz-form.component";
+import { ProfileComponent } from "./components/profile/profile.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'theme-list', component: ThemeListComponent },
   { path: 'quiz-list', component: QuizListComponent },
   { path: 'quiz-list/:idTheme', component: QuizListComponent },
-  { path: 'quiz/:idQuiz', component: QuizComponent },
   { path: 'quiz/create', component: QuizFormComponent },
+  { path: 'quiz/:idQuiz', component: QuizComponent },
   { path: 'login', component: LoginComponent},
   { path: 'sign-up', component: SignupComponent},
   { path: 'forgot-password', component: ForgetPasswordComponent},
   { path: 'reset-password', component: ChangePasswordComponent},
+  { path: 'profile', component: ProfileComponent},
   { path: '**', component: HomeComponent }
 ];
 

@@ -8,6 +8,6 @@ export interface User {
   mail: string;
   age: number;
   sexe: string;
-  pref_topic: Theme;
+  theme_pref: Theme;
   role: Role;
 }

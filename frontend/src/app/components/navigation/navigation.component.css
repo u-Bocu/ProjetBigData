@@ -3,7 +3,7 @@
 }
 
 .sidenav {
-  width: 200px;
+  width: 230px;
 }
 
 .sidenav .logo {
@@ -18,7 +18,7 @@
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 5;
 }
 
 .spacer {
@@ -36,6 +36,12 @@
 
 .menu-icon {
   width: 35px;
+  vertical-align: -5px;
+}
+
+.account-icon {
+  font-size: 25px;
+  width: 30px;
   vertical-align: -5px;
 }
 
