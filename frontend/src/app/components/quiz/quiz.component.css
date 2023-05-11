@@ -30,8 +30,15 @@
   margin-right: 5px;
 }
 
+.validation {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
 .validation button {
   align-self: flex-end;
+  margin: 0 2px;
 }
 
 .loader {
@@ -41,6 +48,7 @@
   top:0;
   bottom:0;
   position:absolute;
+  z-index: 5;
 }
 
 /* Stepper */

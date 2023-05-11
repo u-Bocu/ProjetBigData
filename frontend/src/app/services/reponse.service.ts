@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../environnement";
@@ -8,11 +8,28 @@ import {environment} from "../environnement";
 })
 export class ReponseService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public getReponses(idQuestion?: number): Observable<any> {
-    return  this.http.get(
+    return this.http.get(
       environment.API_URL + '/reponses/' + idQuestion,
+      {headers: environment.HEADERS}
+    );
+  }
+
+  public sendReponseVocale(idQuestion?: number, vocal?: string): Observable<any> {
+    return this.http.post(
+      environment.API_URL + '/reponses/' + idQuestion,
+      {vocal: vocal},
+      {headers: environment.HEADERS}
+    );
+  }
+
+  public isReponseValid(idReponse?: number, idQuestion?: number): Observable<any> {
+    return this.http.post(
+      environment.API_URL + '/reponses/' + idReponse + '/isvalid',
+      {idQuestion: idQuestion},
       {headers: environment.HEADERS}
     );
   }

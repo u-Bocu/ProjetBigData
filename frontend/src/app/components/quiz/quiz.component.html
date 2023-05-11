@@ -22,18 +22,33 @@
 
             <mat-grid-tile class="reponse" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1" *ngFor="let reponse of question.reponses; let i = index">
               <p [ngSwitch]="i">
-                <button mat-mini-fab *ngSwitchCase="0" class="mini-fab">1</button>
-                <button mat-mini-fab *ngSwitchCase="1" class="mini-fab">2</button>
-                <button mat-mini-fab *ngSwitchCase="2" class="mini-fab">3</button>
-                <button mat-mini-fab *ngSwitchCase="3" class="mini-fab">4</button>
+                <button mat-mini-fab *ngSwitchCase="0" class="mini-fab" id="button_1" [color]="boutonSucces == 1 ? 'accent' : 'warn'" [disabled]="(boutonSucces != 1 && boutonEchec != 1) && afficheReponse">1</button>
+                <button mat-mini-fab *ngSwitchCase="1" class="mini-fab" id="button_2" [color]="boutonSucces == 2 ? 'accent' : 'warn'" [disabled]="(boutonSucces != 2 && boutonEchec != 2) && afficheReponse">2</button>
+                <button mat-mini-fab *ngSwitchCase="2" class="mini-fab" id="button_3" [color]="boutonSucces == 3 ? 'accent' : 'warn'" [disabled]="(boutonSucces != 3 && boutonEchec != 3) && afficheReponse">3</button>
+                <button mat-mini-fab *ngSwitchCase="3" class="mini-fab" id="button_4" [color]="boutonSucces == 4 ? 'accent' : 'warn'" [disabled]="(boutonSucces != 4 && boutonEchec != 4) && afficheReponse">4</button>
                 {{reponse.label}}
               </p>
             </mat-grid-tile>
 
             <mat-grid-tile class="validation" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 2, xl: 2}" rowspan="1">
-              <button mat-raised-button color="primary" matStepperNext>
+              <button mat-raised-button color="primary" (click)="confirmation(question.id, 'vocal')" *ngIf="!choix && !afficheReponse">
                 <mat-icon>mic</mat-icon>Votre réponse
               </button>
+
+              <div class="validation" *ngIf="choix && !afficheReponse">
+              <p>Vous avez choisi la réponse : {{choix}}</p>
+                <div>
+                  <button mat-raised-button color="primary" (click)="validation(question.reponses)">Confirmer</button>
+                  <button mat-raised-button color="primary" (click)="confirmation(question.id, 'vocal')">
+                    <mat-icon>mic</mat-icon>Nouvelle réponse
+                  </button>
+                </div>
+              </div>
+
+              <div class="validation" *ngIf="afficheReponse">
+                <p>{{resultatReponse ? 'VRAI' : 'FAUX'}}</p>
+                <button mat-raised-button color="primary" matStepperNext (click)="suivant()">Question suivante</button>
+              </div>
             </mat-grid-tile>
 
           </mat-grid-list>
