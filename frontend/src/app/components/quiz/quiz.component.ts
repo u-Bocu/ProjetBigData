@@ -62,7 +62,8 @@ export class QuizComponent {
       this.boutonSucces = this.choix;
     } else {
       this.resultatReponse = false;
-      //this.boutonSucces;
+      this.boutonSucces = reponses.findIndex((reponse) => reponse == reponseValide) + 1;
+      console.log(reponses, reponses.findIndex((reponse) => reponse == reponseValide));
       this.boutonEchec = this.choix
     }
 

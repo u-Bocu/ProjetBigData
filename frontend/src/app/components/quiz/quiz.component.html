@@ -22,10 +22,10 @@
 
             <mat-grid-tile class="reponse" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1" *ngFor="let reponse of question.reponses; let i = index">
               <p [ngSwitch]="i">
-                <button mat-mini-fab *ngSwitchCase="0" class="mini-fab" id="button_1" [color]="boutonSucces == 1 ? 'accent' : 'warn'" [disabled]="(boutonSucces != 1 && boutonEchec != 1) && afficheReponse">1</button>
-                <button mat-mini-fab *ngSwitchCase="1" class="mini-fab" id="button_2" [color]="boutonSucces == 2 ? 'accent' : 'warn'" [disabled]="(boutonSucces != 2 && boutonEchec != 2) && afficheReponse">2</button>
-                <button mat-mini-fab *ngSwitchCase="2" class="mini-fab" id="button_3" [color]="boutonSucces == 3 ? 'accent' : 'warn'" [disabled]="(boutonSucces != 3 && boutonEchec != 3) && afficheReponse">3</button>
-                <button mat-mini-fab *ngSwitchCase="3" class="mini-fab" id="button_4" [color]="boutonSucces == 4 ? 'accent' : 'warn'" [disabled]="(boutonSucces != 4 && boutonEchec != 4) && afficheReponse">4</button>
+                <button mat-mini-fab *ngSwitchCase="0" class="mini-fab" [ngClass]="boutonSucces == 1 ? 'success' : (boutonEchec == 1 ? 'error' :'primary')" color="primary" id="button_1" [disabled]="(boutonSucces != 1 && boutonEchec != 1) && afficheReponse">1</button>
+                <button mat-mini-fab *ngSwitchCase="1" class="mini-fab" [ngClass]="boutonSucces == 2 ? 'success' : (boutonEchec == 2 ? 'error' :'primary')" color="primary" id="button_2" [disabled]="(boutonSucces != 2 && boutonEchec != 2) && afficheReponse">2</button>
+                <button mat-mini-fab *ngSwitchCase="2" class="mini-fab" [ngClass]="boutonSucces == 3 ? 'success' : (boutonEchec == 3 ? 'error' :'primary')" color="primary" id="button_3" [disabled]="(boutonSucces != 3 && boutonEchec != 3) && afficheReponse">3</button>
+                <button mat-mini-fab *ngSwitchCase="3" class="mini-fab" [ngClass]="boutonSucces == 4 ? 'success' : (boutonEchec == 4 ? 'error' :'primary')" color="primary" id="button_4" [disabled]="(boutonSucces != 4 && boutonEchec != 4) && afficheReponse">4</button>
                 {{reponse.label}}
               </p>
             </mat-grid-tile>

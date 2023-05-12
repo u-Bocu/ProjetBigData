@@ -30,6 +30,14 @@
   margin-right: 5px;
 }
 
+.success {
+  background-color: #28a745;
+}
+
+.error {
+  background-color: #ff0000;
+}
+
 .validation {
   display: flex;
   flex-direction: column;
