@@ -12,7 +12,6 @@ export class StarRatingComponent {
   }
 
   public onClick(rating: string): void {
-    console.log(rating);
     this.rating = parseInt(rating);
   }
 
