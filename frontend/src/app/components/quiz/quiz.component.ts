@@ -17,8 +17,10 @@ export class QuizComponent {
   public choix: number = 0;
   public afficheReponse: boolean = false;
   public resultatReponse: boolean = false;
+  public resultats: Array<boolean> = [];
   public boutonSucces: number = 0;
   public boutonEchec: number = 0;
+  public isComplete: boolean = false;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -40,7 +42,7 @@ export class QuizComponent {
     });
   }
 
-  public confirmation(idQuestion: number, vocal: string): void {
+  public confirmationQuestion(idQuestion: number, vocal: string): void {
     this.loading = true;
     this.reponseService.sendReponseVocale(idQuestion, vocal).subscribe(response => {
       this.choix = response.data.rows.choix
@@ -48,13 +50,11 @@ export class QuizComponent {
     });
   }
 
-  public validation(reponses: Array<Reponse>): void {
+  public validationQuestion(reponses: Array<Reponse>): void {
     const reponseValide = reponses.find(function (reponse) {
       return reponse.is_valid ? reponse : null;
     });
     const reponseChoisie = reponses[this.choix - 1];
-
-    console.log(reponseValide, reponseChoisie);
 
     // Défini si la réponse est vraie ou fausse
     if (reponseValide == reponseChoisie) {
@@ -63,11 +63,11 @@ export class QuizComponent {
     } else {
       this.resultatReponse = false;
       this.boutonSucces = reponses.findIndex((reponse) => reponse == reponseValide) + 1;
-      console.log(reponses, reponses.findIndex((reponse) => reponse == reponseValide));
       this.boutonEchec = this.choix
     }
 
-    // Affiche la bonne réponse
+    // Enregistre le résultat
+    this.resultats.push(this.resultatReponse);
 
     // Réinitialise les variables d'affichage
     this.afficheReponse = true;
@@ -80,5 +80,11 @@ export class QuizComponent {
     this.resultatReponse = false;
     this.boutonSucces = 0
     this.boutonEchec = 0;
+  }
+
+  public validationQuiz(): void {
+    console.log(this.resultats);
+    this.afficheReponse = false;
+    this.isComplete = true;
   }
 }

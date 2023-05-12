@@ -5,8 +5,8 @@
 
   <mat-horizontal-stepper linear="true" labelPosition="bottom">
 
-    <mat-step editable="false" *ngFor="let question of questions">
-      <mat-card class="quiz-card">
+    <mat-step editable="false" *ngFor="let question of questions; index as indexCard">
+      <mat-card class="quiz-card" [class]="afficheReponse ? (resultatReponse ? 'vrai' : 'faux') : ''" *ngIf="!isComplete">
         <mat-card-header>
           <mat-card-title>
             <h1>{{question.question}}</h1>
@@ -31,24 +31,43 @@
             </mat-grid-tile>
 
             <mat-grid-tile class="validation" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 2, xl: 2}" rowspan="1">
-              <button mat-raised-button color="primary" (click)="confirmation(question.id, 'vocal')" *ngIf="!choix && !afficheReponse">
+              <button mat-raised-button color="primary" (click)="confirmationQuestion(question.id, 'vocal')" *ngIf="!choix && !afficheReponse">
                 <mat-icon>mic</mat-icon>Votre réponse
               </button>
 
               <div class="validation" *ngIf="choix && !afficheReponse">
               <p>Vous avez choisi la réponse : {{choix}}</p>
                 <div>
-                  <button mat-raised-button color="primary" (click)="validation(question.reponses)">Confirmer</button>
-                  <button mat-raised-button color="primary" (click)="confirmation(question.id, 'vocal')">
+                  <button mat-raised-button color="primary" (click)="validationQuestion(question.reponses)">Confirmer</button>
+                  <button mat-raised-button color="primary" (click)="confirmationQuestion(question.id, 'vocal')">
                     <mat-icon>mic</mat-icon>Nouvelle réponse
                   </button>
                 </div>
               </div>
 
               <div class="validation" *ngIf="afficheReponse">
-                <p>{{resultatReponse ? 'VRAI' : 'FAUX'}}</p>
-                <button mat-raised-button color="primary" matStepperNext (click)="suivant()">Question suivante</button>
+                <p>{{resultatReponse ? 'Bonne réponse' : 'Mauvaise réponse'}}</p>
+                <button mat-raised-button color="primary" matStepperNext (click)="suivant()" *ngIf="indexCard!=9">Question suivante</button>
+                <button mat-raised-button color="primary" (click)="validationQuiz()" *ngIf="indexCard==9">Valider le quiz</button>
               </div>
+            </mat-grid-tile>
+
+          </mat-grid-list>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="quiz-card" [class]="afficheReponse ? (resultatReponse ? 'vrai' : 'faux') : ''" *ngIf="isComplete">
+        <mat-card-header>
+          <mat-card-title>
+            <h1 class="center">Résultats</h1>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="quiz-card-content">
+          <mat-grid-list [gridCols]="{xs: 1, sm: 1, md: 1, lg: 3, xl: 3}" rowHeight="120px">
+
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="3">
+              <img src="{{question.lien_image}}" class="image_question" alt="Image_Question">
             </mat-grid-tile>
 
           </mat-grid-list>

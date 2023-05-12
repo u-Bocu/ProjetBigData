@@ -1,5 +1,7 @@
 .quiz-card {
   padding: 20px;
+  border: solid 4px white;
+  border-radius: 20px;
 }
 
 .quiz-card-content {
@@ -36,6 +38,14 @@
 
 .error {
   background-color: #ff0000;
+}
+
+.vrai {
+  border-color: #28a745;
+}
+
+.faux {
+  border-color: #ff0000;
 }
 
 .validation {
