@@ -16,10 +16,6 @@ export class StarRatingComponent {
   }
 
   public showIcon(index: string): string {
-    if (this.rating >= parseInt(index)) {
-      return 'star';
-    } else {
-      return 'star_border';
-    }
+    return this.rating >= parseInt(index) ? 'star' : 'star_border';
   }
 }

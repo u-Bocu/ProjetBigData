@@ -1,4 +1,4 @@
-<button mat-icon-button color="primary" *ngFor="let i of ['1','2','3','4','5']" (click)="onClick(i)" [matTooltip]="i" matTooltipPosition="above">
+<button mat-icon-button color="primary" *ngFor="let i of ['1','2','3','4','5']" (click)="onClick(i)" class="star" [disabled]="rating!=0">
   <mat-icon>{{showIcon(i)}}</mat-icon>
 </button>
 

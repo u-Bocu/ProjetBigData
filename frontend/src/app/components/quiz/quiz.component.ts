@@ -20,7 +20,7 @@ export class QuizComponent {
   public resultats: Array<boolean> = [];
   public boutonSucces: number = 0;
   public boutonEchec: number = 0;
-  public isComplete: boolean = true;
+  public isComplete: boolean = false;
   public score: string = '';
 
   constructor(
