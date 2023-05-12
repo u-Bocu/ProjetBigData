@@ -3,7 +3,7 @@
 <div class="grid-container">
   <h1 class="mat-h1">Quiz</h1>
 
-  <mat-horizontal-stepper linear="true" labelPosition="bottom">
+  <mat-horizontal-stepper linear labelPosition="bottom">
 
     <mat-step editable="false" *ngFor="let question of questions; index as indexCard">
       <mat-card class="quiz-card" [class]="afficheReponse ? (resultatReponse ? 'vrai' : 'faux') : ''" *ngIf="!isComplete">
@@ -66,8 +66,12 @@
         <mat-card-content class="quiz-card-content">
           <mat-grid-list [gridCols]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowHeight="120px">
 
-            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="2">
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1">
               <p class="score">{{score}}</p>
+            </mat-grid-tile>
+
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1">
+              <app-star-rating></app-star-rating>
             </mat-grid-tile>
 
             <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1" class="validation">
