@@ -64,10 +64,14 @@
         </mat-card-header>
 
         <mat-card-content class="quiz-card-content">
-          <mat-grid-list [gridCols]="{xs: 1, sm: 1, md: 1, lg: 3, xl: 3}" rowHeight="120px">
+          <mat-grid-list [gridCols]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowHeight="120px">
 
-            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="3">
-              <img src="{{question.lien_image}}" class="image_question" alt="Image_Question">
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="2">
+              <p class="score">{{score}}</p>
+            </mat-grid-tile>
+
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1" class="validation">
+              <button mat-raised-button color="primary" routerLink="/">Retour à l'accueil</button>
             </mat-grid-tile>
 
           </mat-grid-list>

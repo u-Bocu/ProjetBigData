@@ -21,6 +21,7 @@ export class QuizComponent {
   public boutonSucces: number = 0;
   public boutonEchec: number = 0;
   public isComplete: boolean = false;
+  public score: string = '';
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -83,8 +84,8 @@ export class QuizComponent {
   }
 
   public validationQuiz(): void {
-    console.log(this.resultats);
     this.afficheReponse = false;
     this.isComplete = true;
+    this.score = String(this.resultats.filter(Boolean).length) + ' / 10';
   }
 }

@@ -69,6 +69,11 @@
   z-index: 5;
 }
 
+.score {
+  font-size: 70px;
+  font-weight: bold;
+}
+
 /* Stepper */
 mat-horizontal-stepper {
   background-color: #fafafa;
