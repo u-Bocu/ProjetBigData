@@ -5,6 +5,8 @@ import {ActivatedRoute} from "@angular/router";
 import {Question} from "../../models/question";
 import {ReponseService} from "../../services/reponse.service";
 import {Reponse} from "../../models/reponse";
+import {AudioRecordingService} from "../../services/audio-recording.service";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-quiz',
@@ -23,11 +25,17 @@ export class QuizComponent {
   public isComplete: boolean = false;
   public score: string = '';
 
+  public isRecording = false;
+  public recordedTime: any;
+  public blobUrl: SafeUrl | undefined;
+
   constructor(
     private breakpointObserver: BreakpointObserver,
     private questionService: QuestionService,
     private reponseService: ReponseService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private audioRecordingService: AudioRecordingService,
+    private sanitizer: DomSanitizer
   ) {
     const idQuiz: number = this.route.snapshot.paramMap.get('idQuiz') as unknown as number;
     this.loading = true;
@@ -41,14 +49,25 @@ export class QuizComponent {
         });
       })
     });
+
+    // Audio
+    this.audioRecordingService.recordingFailed().subscribe(() => {
+      this.isRecording = false;
+    });
+
+    this.audioRecordingService.getRecordedTime().subscribe((time) => {
+      this.recordedTime = time;
+    });
+
+    this.audioRecordingService.getRecordedBlob().subscribe((data) => {
+      this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
+    });
   }
 
-  public confirmationQuestion(idQuestion: number, vocal: string): void {
+  public confirmationQuestion(idQuestion: number): void {
     this.loading = true;
-    this.reponseService.sendReponseVocale(idQuestion, vocal).subscribe(response => {
-      this.choix = response.data.rows.choix
-      this.loading = false;
-    });
+
+    this.startRecording(idQuestion);
   }
 
   public validationQuestion(reponses: Array<Reponse>): void {
@@ -87,5 +106,45 @@ export class QuizComponent {
     this.afficheReponse = false;
     this.isComplete = true;
     this.score = String(this.resultats.filter(Boolean).length) + ' / 10';
+  }
+
+
+  /* Fonctions Audio */
+  public startRecording(idQuestion: number): void {
+    this.clearRecordedData();
+
+    this.isRecording = true;
+    this.audioRecordingService.startRecording();
+    this.delay(3000).then(() => {
+      const vocal = 'vocal';
+      this.stopRecording();
+
+      this.reponseService.sendReponseVocale(idQuestion, vocal).subscribe(response => {
+        this.choix = response.data.rows.choix
+        this.loading = false;
+      });
+    });
+  }
+
+  public abortRecording(): void {
+    if (this.isRecording) {
+      this.isRecording = false;
+      this.audioRecordingService.abortRecording();
+    }
+  }
+
+  public stopRecording(): void {
+    if (this.isRecording) {
+      this.audioRecordingService.stopRecording();
+      this.isRecording = false;
+    }
+  }
+
+  public clearRecordedData(): void {
+    this.blobUrl = undefined;
+  }
+
+  async delay(ms: number) {
+    await new Promise<void>(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("fired"));
   }
 }

@@ -31,16 +31,23 @@
             </mat-grid-tile>
 
             <mat-grid-tile class="validation" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 2, xl: 2}" rowspan="1">
-              <button mat-raised-button color="primary" (click)="confirmationQuestion(question.id, 'vocal')" *ngIf="!choix && !afficheReponse">
+              <button mat-raised-button color="primary" (click)="confirmationQuestion(question.id)" *ngIf="!choix && !afficheReponse" [disabled]="isRecording">
                 <mat-icon>mic</mat-icon>Votre réponse
+                <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
               </button>
 
               <div class="validation" *ngIf="choix && !afficheReponse">
-              <p>Vous avez choisi la réponse : {{choix}}</p>
+                <p *ngIf="!isRecording">Vous avez choisi la réponse : {{choix}}</p>
                 <div>
-                  <button mat-raised-button color="primary" (click)="validationQuestion(question.reponses)">Confirmer</button>
-                  <button mat-raised-button color="primary" (click)="confirmationQuestion(question.id, 'vocal')">
+                  <audio *ngIf="!isRecording && blobUrl" controls>
+                    <source [src]="blobUrl" type="audio/webm">
+                  </audio>
+                </div>
+                <div>
+                  <button mat-raised-button color="primary" (click)="validationQuestion(question.reponses)" [disabled]="isRecording">Confirmer</button>
+                  <button mat-raised-button color="primary" (click)="confirmationQuestion(question.id)" [disabled]="isRecording">
                     <mat-icon>mic</mat-icon>Nouvelle réponse
+                    <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
                   </button>
                 </div>
               </div>
