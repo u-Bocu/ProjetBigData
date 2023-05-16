@@ -44,7 +44,7 @@
                   </audio>
                 </div>
                 <div>
-                  <button mat-raised-button color="primary" (click)="validationQuestion(question.reponses)" [disabled]="isRecording">Confirmer</button>
+                  <button mat-raised-button color="primary" (click)="validationQuestion(question.reponses)" *ngIf="!isRecording">Confirmer</button>
                   <button mat-raised-button color="primary" (click)="confirmationQuestion(question.id)" [disabled]="isRecording">
                     <mat-icon>mic</mat-icon>Nouvelle réponse
                     <div *ngIf="isRecording && !blobUrl"> {{recordedTime}} </div>
