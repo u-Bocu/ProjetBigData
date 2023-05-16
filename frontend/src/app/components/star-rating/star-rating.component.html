@@ -1,0 +1,5 @@
+<button mat-icon-button color="primary" *ngFor="let i of ['1','2','3','4','5']" (click)="onClick(i)" class="star" [disabled]="rating!=0">
+  <mat-icon>{{showIcon(i)}}</mat-icon>
+</button>
+
+<p *ngIf="rating != 0">Vous avez estimé votre satisfaction de ce quiz à : {{rating}} / 5 étoiles</p>

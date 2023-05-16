@@ -3,10 +3,10 @@
 <div class="grid-container">
   <h1 class="mat-h1">Quiz</h1>
 
-  <mat-horizontal-stepper linear="true" labelPosition="bottom">
+  <mat-horizontal-stepper linear labelPosition="bottom">
 
-    <mat-step editable="false" *ngFor="let question of questions">
-      <mat-card class="quiz-card">
+    <mat-step editable="false" *ngFor="let question of questions; index as indexCard">
+      <mat-card class="quiz-card" [class]="afficheReponse ? (resultatReponse ? 'vrai' : 'faux') : ''" *ngIf="!isComplete">
         <mat-card-header>
           <mat-card-title>
             <h1>{{question.question}}</h1>
@@ -22,18 +22,60 @@
 
             <mat-grid-tile class="reponse" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1" *ngFor="let reponse of question.reponses; let i = index">
               <p [ngSwitch]="i">
-                <button mat-mini-fab *ngSwitchCase="0" class="mini-fab">1</button>
-                <button mat-mini-fab *ngSwitchCase="1" class="mini-fab">2</button>
-                <button mat-mini-fab *ngSwitchCase="2" class="mini-fab">3</button>
-                <button mat-mini-fab *ngSwitchCase="3" class="mini-fab">4</button>
+                <button mat-mini-fab *ngSwitchCase="0" class="mini-fab" [ngClass]="boutonSucces == 1 ? 'success' : (boutonEchec == 1 ? 'error' :'primary')" color="primary" id="button_1" [disabled]="(boutonSucces != 1 && boutonEchec != 1) && afficheReponse">1</button>
+                <button mat-mini-fab *ngSwitchCase="1" class="mini-fab" [ngClass]="boutonSucces == 2 ? 'success' : (boutonEchec == 2 ? 'error' :'primary')" color="primary" id="button_2" [disabled]="(boutonSucces != 2 && boutonEchec != 2) && afficheReponse">2</button>
+                <button mat-mini-fab *ngSwitchCase="2" class="mini-fab" [ngClass]="boutonSucces == 3 ? 'success' : (boutonEchec == 3 ? 'error' :'primary')" color="primary" id="button_3" [disabled]="(boutonSucces != 3 && boutonEchec != 3) && afficheReponse">3</button>
+                <button mat-mini-fab *ngSwitchCase="3" class="mini-fab" [ngClass]="boutonSucces == 4 ? 'success' : (boutonEchec == 4 ? 'error' :'primary')" color="primary" id="button_4" [disabled]="(boutonSucces != 4 && boutonEchec != 4) && afficheReponse">4</button>
                 {{reponse.label}}
               </p>
             </mat-grid-tile>
 
             <mat-grid-tile class="validation" [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 2, xl: 2}" rowspan="1">
-              <button mat-raised-button color="primary" matStepperNext>
+              <button mat-raised-button color="primary" (click)="confirmationQuestion(question.id, 'vocal')" *ngIf="!choix && !afficheReponse">
                 <mat-icon>mic</mat-icon>Votre réponse
               </button>
+
+              <div class="validation" *ngIf="choix && !afficheReponse">
+              <p>Vous avez choisi la réponse : {{choix}}</p>
+                <div>
+                  <button mat-raised-button color="primary" (click)="validationQuestion(question.reponses)">Confirmer</button>
+                  <button mat-raised-button color="primary" (click)="confirmationQuestion(question.id, 'vocal')">
+                    <mat-icon>mic</mat-icon>Nouvelle réponse
+                  </button>
+                </div>
+              </div>
+
+              <div class="validation" *ngIf="afficheReponse">
+                <p>{{resultatReponse ? 'Bonne réponse' : 'Mauvaise réponse'}}</p>
+                <button mat-raised-button color="primary" matStepperNext (click)="suivant()" *ngIf="indexCard!=9">Question suivante</button>
+                <button mat-raised-button color="primary" (click)="validationQuiz()" *ngIf="indexCard==9">Valider le quiz</button>
+              </div>
+            </mat-grid-tile>
+
+          </mat-grid-list>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="quiz-card" [class]="afficheReponse ? (resultatReponse ? 'vrai' : 'faux') : ''" *ngIf="isComplete">
+        <mat-card-header>
+          <mat-card-title>
+            <h1 class="center">Résultats</h1>
+          </mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="quiz-card-content">
+          <mat-grid-list [gridCols]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowHeight="120px">
+
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1">
+              <p class="score">{{score}}</p>
+            </mat-grid-tile>
+
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1">
+              <app-star-rating></app-star-rating>
+            </mat-grid-tile>
+
+            <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1" class="validation">
+              <button mat-raised-button color="primary" routerLink="/">Retour à l'accueil</button>
             </mat-grid-tile>
 
           </mat-grid-list>

@@ -40,6 +40,8 @@ import { ProfileUserPersonalInfosComponent } from './components/profile-user/pro
 import { ProfileUserQuizHistoryComponent } from './components/profile-user/profile-user-quiz-history/profile-user-quiz-history.component';
 import { ProfileUserQuizCreatedComponent } from './components/profile-user/profile-user-quiz-created/profile-user-quiz-created.component';
 import { ProfileUserStatisticsComponent } from './components/profile-user/profile-user-statistics/profile-user-statistics.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -60,32 +62,34 @@ import { ProfileUserStatisticsComponent } from './components/profile-user/profil
     ProfileUserPersonalInfosComponent,
     ProfileUserQuizHistoryComponent,
     ProfileUserQuizCreatedComponent,
-    ProfileUserStatisticsComponent
+    ProfileUserStatisticsComponent,
+    StarRatingComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    CarouselModule.forRoot(),
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
-    MatListModule,
-    MatInputModule,
-    MatSelectModule,
-    MatStepperModule,
-    MatRadioModule,
-    ToastrModule.forRoot({}),
-    ReactiveFormsModule,
-    MatProgressSpinnerModule,
-    MatTabsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        CarouselModule.forRoot(),
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatInputModule,
+        MatSelectModule,
+        MatStepperModule,
+        MatRadioModule,
+        ToastrModule.forRoot({}),
+        ReactiveFormsModule,
+        MatProgressSpinnerModule,
+        MatTabsModule,
+        MatTooltipModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

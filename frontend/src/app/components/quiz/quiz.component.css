@@ -1,5 +1,7 @@
 .quiz-card {
   padding: 20px;
+  border: solid 4px white;
+  border-radius: 20px;
 }
 
 .quiz-card-content {
@@ -30,8 +32,31 @@
   margin-right: 5px;
 }
 
+.success {
+  background-color: #28a745;
+}
+
+.error {
+  background-color: #ff0000;
+}
+
+.vrai {
+  border-color: #28a745;
+}
+
+.faux {
+  border-color: #ff0000;
+}
+
+.validation {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+}
+
 .validation button {
   align-self: flex-end;
+  margin: 0 2px;
 }
 
 .loader {
@@ -41,9 +66,19 @@
   top:0;
   bottom:0;
   position:absolute;
+  z-index: 5;
+}
+
+.score {
+  font-size: 70px;
+  font-weight: bold;
 }
 
 /* Stepper */
 mat-horizontal-stepper {
   background-color: #fafafa;
+}
+
+::ng-deep .mat-horizontal-stepper-header {
+  pointer-events: none !important;
 }

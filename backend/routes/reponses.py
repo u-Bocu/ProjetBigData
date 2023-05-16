@@ -1,5 +1,5 @@
 import mysql.connector
-from flask import Blueprint
+from flask import Blueprint, request
 from config import DB_CONFIG
 
 reponses = Blueprint('reponses', __name__)
@@ -25,6 +25,67 @@ def get_reponses_by_question(id_question):
     except:
         success = False
         message = "Erreur lors de la récupération des réponses."
+
+    return {
+        "success": success,
+        "message": message,
+        "data": {
+            'count': count,
+            'rows': rows
+        }
+    }
+
+
+@reponses.route('/<id_question>', methods=['POST'])
+def send_reponse_vocal_by_question(id_question):
+    success = True
+    message = "Choix analysé avec succès"
+    count = 1
+    rows = []
+
+    try:
+        vocal = request.get_json().get('vocal')
+
+        # Analyse avec le modèle pour déterminer le chiffre cité (1, 2, 3 ou 4)
+
+        rows = {"choix": 1}
+
+    except:
+        success = False
+        message = "Erreur lors de l'analyse de la réponse choisie."
+
+    return {
+        "success": success,
+        "message": message,
+        "data": {
+            'count': count,
+            'rows': rows
+        }
+    }
+
+
+@reponses.route('/<id_reponse>/isvalid', methods=['POST'])
+def is_reponse_valid(id_reponse):
+    success = True
+    message = "Réponse vérifiée avec succès"
+    count = 1
+    rows = []
+
+    try:
+        id_question = request.get_json().get('id_question')
+
+        mysqldb = mysql.connector.connect(**DB_CONFIG)
+        cursor = mysqldb.cursor(dictionary=True)
+        cursor.execute(''' SELECT * FROM reponses WHERE reponses.id = %s;''', (id_reponse,))
+
+        rows = cursor.fetchone()
+        print(rows)
+
+        cursor.close()
+
+    except:
+        success = False
+        message = "Erreur lors de la vérification de la réponse."
 
     return {
         "success": success,
