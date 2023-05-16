@@ -7,7 +7,8 @@ FOLDER_PATH = './dataset/fr/clips/'
 
 def load_audio(path):
     y, _ = librosa.load(FOLDER_PATH + path)
-    return pywt.dwt(y, 'haar')
+    cd, ca = pywt.dwt(y, 'haar')
+    return cd
 
 def load_train_dataset():
     data = pd.read_csv('./dataset/fr/train.tsv', delimiter='\t')

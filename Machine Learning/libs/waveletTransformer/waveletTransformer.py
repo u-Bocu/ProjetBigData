@@ -18,7 +18,7 @@ class WaveletTransformer(Model):
         self.max_position_encoding = max_position_encoding
 
         # Define inputs
-        self.inputs = layers.Input(shape=(None, None, 1))
+        self.inputs = layers.Input(shape=(128, 550, 1))
         self.conv1 = layers.Conv2D(filters=64, kernel_size=(3, 3), padding='same', activation='relu')
         self.pos_encoding = layers.Embedding(input_dim=self.max_position_encoding, output_dim=self.d_model)
 
@@ -37,9 +37,6 @@ class WaveletTransformer(Model):
         self.dense2 = layers.Dense(self.target_vocab_size, activation='softmax')
 
     def call(self, x):
-        # Prepare wavelets
-        x = self.conv1(x)
-
         # Add encoding position
         seq_len = tf.shape(x)[1]
         x += self.pos_encoding(tf.range(seq_len))
