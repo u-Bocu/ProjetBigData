@@ -49,9 +49,8 @@ def send_reponse_vocal_by_question(id_question):
 
         # Analyse avec le modèle pour déterminer le chiffre cité (1, 2, 3 ou 4)
         prediction = predict_audio(base64_file)
-        print(prediction)
 
-        rows = {"choix": 1}
+        rows = {"choix": prediction}
 
     except:
         success = False

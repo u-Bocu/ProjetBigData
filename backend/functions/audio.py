@@ -42,9 +42,9 @@ def predict_audio(base64_file):
     input_data = preprocess_audio()
 
     # Step 4: Make predictions using the Keras model
+    word_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'firefox', 'oui', 'non']
     prediction = model.predict(input_data)[0]
-    print(prediction)
     predicted_index = np.argmax(prediction)
-    recognized_number = predicted_index + 1
+    recognized_word = word_list[predicted_index]
 
-    return recognized_number
+    return recognized_word
