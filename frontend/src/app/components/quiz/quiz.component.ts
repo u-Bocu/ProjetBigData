@@ -69,6 +69,7 @@ export class QuizComponent {
         .then((base64String: string) => {
           this.reponseService.sendReponseVocale(this.idQuestion!, base64String).subscribe(response => {
             this.choix = response.data.rows.choix
+            this.isRecording = false;
             this.loading = false;
           });
         });
@@ -132,7 +133,6 @@ export class QuizComponent {
 
   public stopRecording(): void {
     this.audioRecordingService.stopRecording();
-    this.isRecording = false;
   }
 
   public clearRecordedData(): void {
