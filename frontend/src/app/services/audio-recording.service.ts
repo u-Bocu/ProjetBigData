@@ -47,10 +47,6 @@ export class AudioRecordingService {
 
   }
 
-  abortRecording() {
-    this.stopMedia();
-  }
-
   private record() {
     if (this.stream) {
       this.recorder = new RecordRTC.StereoAudioRecorder(this.stream, {
@@ -83,7 +79,7 @@ export class AudioRecordingService {
     return val;
   }
 
-  stopRecording() {
+  public stopRecording() {
     if (this.recorder) {
       this.recorder.stop((blob: any) => {
         if (this.startTime) {
@@ -111,4 +107,17 @@ export class AudioRecordingService {
     }
   }
 
+  public convertFileToBase64(file: File): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        resolve(base64String.split(',')[1]); // Extract the base64 string excluding the data URL prefix
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
 }

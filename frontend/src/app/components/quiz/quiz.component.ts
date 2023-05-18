@@ -16,6 +16,7 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 export class QuizComponent {
   public questions: Array<Question> = [];
   public loading: boolean = false;
+  public idQuestion?: number;
   public choix: number = 0;
   public afficheReponse: boolean = false;
   public resultatReponse: boolean = false;
@@ -27,7 +28,7 @@ export class QuizComponent {
 
   public isRecording = false;
   public recordedTime: any;
-  public blobUrl: SafeUrl | undefined;
+  public blobUrl?: SafeUrl;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -61,13 +62,22 @@ export class QuizComponent {
 
     this.audioRecordingService.getRecordedBlob().subscribe((data) => {
       this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
+
+      // Envoi le fichier audio à l'API
+      this.loading = true;
+      this.audioRecordingService.convertFileToBase64(new File([data.blob], 'audio.mp3'))
+        .then((base64String: string) => {
+          this.reponseService.sendReponseVocale(this.idQuestion!, base64String).subscribe(response => {
+            this.choix = response.data.rows.choix
+            this.loading = false;
+          });
+        });
     });
   }
 
   public confirmationQuestion(idQuestion: number): void {
-    this.loading = true;
-
-    this.startRecording(idQuestion);
+    this.idQuestion = idQuestion;
+    this.startRecording();
   }
 
   public validationQuestion(reponses: Array<Reponse>): void {
@@ -110,34 +120,19 @@ export class QuizComponent {
 
 
   /* Fonctions Audio */
-  public startRecording(idQuestion: number): void {
+  public startRecording(): void {
     this.clearRecordedData();
 
     this.isRecording = true;
     this.audioRecordingService.startRecording();
     this.delay(3000).then(() => {
-      const vocal = 'vocal';
       this.stopRecording();
-
-      this.reponseService.sendReponseVocale(idQuestion, vocal).subscribe(response => {
-        this.choix = response.data.rows.choix
-        this.loading = false;
-      });
     });
   }
 
-  public abortRecording(): void {
-    if (this.isRecording) {
-      this.isRecording = false;
-      this.audioRecordingService.abortRecording();
-    }
-  }
-
   public stopRecording(): void {
-    if (this.isRecording) {
-      this.audioRecordingService.stopRecording();
-      this.isRecording = false;
-    }
+    this.audioRecordingService.stopRecording();
+    this.isRecording = false;
   }
 
   public clearRecordedData(): void {
@@ -145,6 +140,6 @@ export class QuizComponent {
   }
 
   async delay(ms: number) {
-    await new Promise<void>(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("fired"));
+    await new Promise<void>(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("Fin d'enregistrement."));
   }
 }

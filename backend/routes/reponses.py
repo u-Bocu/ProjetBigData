@@ -1,6 +1,7 @@
 import mysql.connector
 from flask import Blueprint, request
 from config import DB_CONFIG
+from functions.audio import predict_audio
 
 reponses = Blueprint('reponses', __name__)
 
@@ -44,9 +45,11 @@ def send_reponse_vocal_by_question(id_question):
     rows = []
 
     try:
-        vocal = request.get_json().get('vocal')
+        base64_file = request.get_json().get('base64File')
 
         # Analyse avec le modèle pour déterminer le chiffre cité (1, 2, 3 ou 4)
+        prediction = predict_audio(base64_file)
+        print(prediction)
 
         rows = {"choix": 1}
 
