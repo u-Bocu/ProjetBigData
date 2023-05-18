@@ -78,11 +78,11 @@
             </mat-grid-tile>
 
             <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1">
-              <app-star-rating></app-star-rating>
+              <app-star-rating (ratingEvent)="sendResultats($event)"></app-star-rating>
             </mat-grid-tile>
 
             <mat-grid-tile [gridColspan]="{xs: 1, sm: 1, md: 1, lg: 1, xl: 1}" rowspan="1" class="validation">
-              <button mat-raised-button color="primary" routerLink="/">Retour à l'accueil</button>
+              <button mat-raised-button color="primary" routerLink="/" [disabled]="this.satisfaction == 0">Retour à l'accueil</button>
             </mat-grid-tile>
 
           </mat-grid-list>
