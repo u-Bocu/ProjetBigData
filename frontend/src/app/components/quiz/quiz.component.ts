@@ -7,6 +7,8 @@ import {ReponseService} from "../../services/reponse.service";
 import {Reponse} from "../../models/reponse";
 import {AudioRecordingService} from "../../services/audio-recording.service";
 import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {ResultatService} from "../../services/resultat.service";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 @Component({
   selector: 'app-quiz',
@@ -25,6 +27,9 @@ export class QuizComponent {
   public boutonEchec: number = 0;
   public isComplete: boolean = false;
   public score: string = '';
+  public idQuiz: number = 0;
+  public idUser: number | null;
+  public satisfaction: number = 0;
 
   public isRecording = false;
   public recordedTime: any;
@@ -36,11 +41,14 @@ export class QuizComponent {
     private reponseService: ReponseService,
     private route: ActivatedRoute,
     private audioRecordingService: AudioRecordingService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private resultatService: ResultatService,
+    private localStorageService: LocalStorageService
   ) {
-    const idQuiz: number = this.route.snapshot.paramMap.get('idQuiz') as unknown as number;
+    this.idUser = this.localStorageService.getData('user_id') ? parseInt(this.localStorageService.getData('user_id')) : null;
+    this.idQuiz = this.route.snapshot.paramMap.get('idQuiz') as unknown as number;
     this.loading = true;
-    questionService.getQuestionsByQuiz(idQuiz).subscribe(response => {
+    questionService.getQuestionsByQuiz(this.idQuiz).subscribe(response => {
       this.questions = response.data.rows;
 
       this.questions.forEach(question => {
@@ -117,6 +125,13 @@ export class QuizComponent {
     this.afficheReponse = false;
     this.isComplete = true;
     this.score = String(this.resultats.filter(Boolean).length) + ' / 10';
+  }
+
+  public sendResultats(satisfaction: number): void {
+    this.satisfaction = satisfaction;
+    this.resultatService.postResultatQuiz(this.idQuiz, this.idUser, this.resultats.filter(Boolean).length, satisfaction).subscribe(() => {
+      console.log("Résultat envoyé.");
+    })
   }
 
 

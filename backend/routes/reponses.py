@@ -74,8 +74,6 @@ def is_reponse_valid(id_reponse):
     rows = []
 
     try:
-        id_question = request.get_json().get('id_question')
-
         mysqldb = mysql.connector.connect(**DB_CONFIG)
         cursor = mysqldb.cursor(dictionary=True)
         cursor.execute(''' SELECT * FROM reponses WHERE reponses.id = %s;''', (id_reponse,))
