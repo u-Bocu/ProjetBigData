@@ -1,10 +1,10 @@
-import {Component} from '@angular/core';
-import {BreakpointObserver} from '@angular/cdk/layout';
-import {QuestionService} from "../../services/question.service";
-import {ActivatedRoute} from "@angular/router";
-import {Question} from "../../models/question";
-import {ReponseService} from "../../services/reponse.service";
-import {Reponse} from "../../models/reponse";
+import { Component } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { QuestionService } from "../../services/question.service";
+import { ActivatedRoute } from "@angular/router";
+import { Question } from "../../models/question";
+import { ReponseService } from "../../services/reponse.service";
+import { Reponse } from "../../models/reponse";
 
 @Component({
   selector: 'app-quiz',

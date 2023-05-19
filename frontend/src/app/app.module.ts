@@ -35,9 +35,10 @@ import { QuizFormComponent } from './components/quiz-form/quiz-form.component';
 import { GridColspanDirective } from './directives/grid-colspan.directive';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { ProfileComponent } from './components/profile/profile.component';
-import {MatTabsModule} from "@angular/material/tabs";
+import { MatTabsModule } from "@angular/material/tabs";
 import { ProfileUserPersonalInfosComponent } from './components/profile-user/profile-user-personal-infos/profile-user-personal-infos.component';
 import { ProfileUserQuizHistoryComponent } from './components/profile-user/profile-user-quiz-history/profile-user-quiz-history.component';
+import { ProfileUserKPIComponent } from './components/profile-user/profile-user-kpi/profile-user-kpi.component';
 import { ProfileUserQuizCreatedComponent } from './components/profile-user/profile-user-quiz-created/profile-user-quiz-created.component';
 import { ProfileUserStatisticsComponent } from './components/profile-user/profile-user-statistics/profile-user-statistics.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
@@ -63,6 +64,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     ProfileUserQuizHistoryComponent,
     ProfileUserQuizCreatedComponent,
     ProfileUserStatisticsComponent,
+    ProfileUserKPIComponent,
     StarRatingComponent
   ],
     imports: [

@@ -1,11 +1,11 @@
-import {Component} from '@angular/core';
-import {Md5} from 'ts-md5';
-import {FormBuilder, Validators} from '@angular/forms';
-import {AuthService} from 'src/app/services/auth.service';
-import {ToastrService} from 'ngx-toastr';
-import {LocalStorageService} from "../../services/local-storage.service";
-import {Router} from "@angular/router";
-import {EventService} from "../../services/event.service";
+import { Component } from '@angular/core';
+import { Md5 } from 'ts-md5';
+import { FormBuilder, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
+import { LocalStorageService } from "../../services/local-storage.service";
+import { Router } from "@angular/router";
+import { EventService } from "../../services/event.service";
 
 @Component({
   selector: 'app-login',

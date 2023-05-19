@@ -1,6 +1,6 @@
-import {Quiz} from "./quiz";
-import {User} from "./user";
-import {Satisfaction} from "./satisfaction";
+import { Quiz } from "./quiz";
+import { User } from "./user";
+import { Satisfaction } from "./satisfaction";
 
 export interface Resultat {
   id: number;
