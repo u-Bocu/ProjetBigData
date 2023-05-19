@@ -52,11 +52,11 @@
       <h2>Global</h2>
       <div class="block">
         <h2>Votre score moyen</h2>
-        <p><b>Score</b><br>{{kpi_avg_score[0].score_moyen}}</p>
+        <p><b>Score</b><br><span #avgScoreElement id="avg-score">{{ kpi_avg_score[0]?.score_moyen }}</span></p>
       </div>
       <div class="block">
         <h2>Nombre de quiz créés</h2>
-        <p><b>Total</b><br>{{kpi_quiz_created[0].nb_quiz_cree}}<br> </p>
+        <p><b>Total</b><br><span #quizCreatedElement id="quiz-created">{{ kpi_quiz_created[0]?.nb_quiz_cree }}</span></p>
       </div>
     </div>
   </div>
@@ -65,11 +65,11 @@
       <h2>Thème</h2>
       <div class="block">
         <h2>Meilleur score</h2>
-        <p><b>{{kpi_best_theme[0].theme}}</b><br>{{kpi_best_theme[0].score_moyen}}</p>
+        <p><b>{{ kpi_best_theme[0]?.theme }}</b><br><span #bestThemeScoreElement id="best-theme-score">{{ kpi_best_theme[0]?.score_moyen }}</span></p>
       </div>
       <div class="block">
         <h2>Score à améliorer</h2>
-        <p><b>{{kpi_worse_theme[0].theme}}</b><br>{{kpi_worse_theme[0].score_moyen}}</p>
+        <p><b>{{ kpi_worse_theme[0]?.theme }}</b><br><span #worseThemeScoreElement id="worse-theme-score">{{ kpi_worse_theme[0]?.score_moyen }}</span></p>
       </div>
     </div>
   </div>
@@ -78,13 +78,12 @@
       <h2>Quiz</h2>
       <div class="block">
         <h2>Meilleur score</h2>
-        <p><b>{{kpi_best_quiz[0].label}}</b><br>{{kpi_best_quiz[0].score}}</p>
+        <p><b>{{ kpi_best_quiz[0]?.label }}</b><br><span #bestQuizScoreElement id="best-quiz-score">{{ kpi_best_quiz[0]?.score }}</span></p>
       </div>
       <div class="block">
         <h2>Score à améliorer</h2>
-        <p><b>{{kpi_worse_quiz[0].label}}</b><br>{{kpi_worse_quiz[0].score}}</p>
+        <p><b>{{ kpi_worse_quiz[0]?.label }}</b><br><span #worseQuizScoreElement id="worse-quiz-score">{{ kpi_worse_quiz[0]?.score }}</span></p>
       </div>
     </div>
   </div>
 </div>
-
