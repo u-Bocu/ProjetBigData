@@ -1,5 +1,6 @@
 import pandas as pd
 import os
+import torch
 import librosa
 import librosa.display
 import matplotlib.pyplot as plt
@@ -10,7 +11,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 import tensorflow as tf
-from keras.layers import LSTM, Dense, Dropout, Conv2D
+from keras.layers import LSTM, Dense, Dropout, Conv2D, Flatten, Reshape, MaxPooling2D
 import numpy as np
 import keras
 from keras.utils import to_categorical
@@ -63,24 +64,34 @@ print(len(y_val))
 input_shape = (128, 550, 1)
 
 model = keras.Sequential()
-model.add(Conv2D(128, kernel_size=(3, 3), activation='relu', input_shape=input_shape))
-model.add(LSTM(64))
-model.add(Dropout(0.2))
-model.add(Dense(128, activation='relu'))
-model.add(Dense(64, activation='relu'))
-model.add(Dropout(0.4))
-model.add(Dense(48, activation='relu'))
-model.add(Dropout(0.4))
-model.add(Dense(24, activation='relu'))
-model.add(Dropout(0.2))
+model.add(Dense(512, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(256, activation='relu'))
+model.add(Dropout(0.5))
+# Couche de sortie
 model.add(Dense(14, activation='softmax'))
-model.summary()
+
+#model.add(Reshape((64, -1)))
+#model.add(LSTM(64, input_shape(64, None)))
+#model.add(Dropout(0.2))
+#model.add(Dense(128, activation='relu'))
+#model.add(Dense(64, activation='relu'))
+#model.add(Dropout(0.4))
+#model.add(Dense(48, activation='relu'))
+#model.add(Dropout(0.4))
+#model.add(Dense(24, activation='relu'))
+#model.add(Dropout(0.2))
+#model.add(Dense(14, activation='softmax'))
+#model.build(input_shape)
+#model.summary()
 
 #optimizer = keras.optimizers.Adam(learning_rate=1)
 model.compile(optimizer='adam', loss='SparseCategoricalCrossentropy', metrics=['accuracy'])
-history = model.fit(X_train, y_train, epochs=20, batch_size=100, validation_data=(X_val, y_val))
+history = model.fit(X_train, y_train, epochs=20, batch_size=254, validation_data=(X_val, y_val))
 
 TrainLoss, Trainacc = model.evaluate(X_train,y_train)
 TestLoss, Testacc = model.evaluate(X_test, y_test)
 y_pred=model.predict(X_test)
 print('Confusion_matrix: ',tf.math.confusion_matrix(y_test, np.argmax(y_pred,axis=1)))
+
+model.save("model.h5")
