@@ -16,4 +16,20 @@ export class ThemeService {
       {headers: environment.HEADERS}
     );
   }
+
+  public getBestTheme(idUser?: number): Observable<any> {
+    const url = '/themes/best_theme/' + idUser;
+    return  this.http.get(
+      environment.API_URL + url,
+      {headers: environment.HEADERS}
+    );
+  }
+
+  public getWorseTheme(idUser?: number): Observable<any> {
+    const url = '/themes/worse_theme/' + idUser;
+    return  this.http.get(
+      environment.API_URL + url,
+      {headers: environment.HEADERS}
+    );
+  }
 }

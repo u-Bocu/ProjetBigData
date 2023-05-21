@@ -49,3 +49,69 @@ def get_user_by_id(id_user):
             'rows': rows
         }
     }
+
+@users.route('/avg_score/<id_user>', methods=['GET'])
+def getAvgScore(id_user):
+    success = True
+    message = "Score moyen récupéré avec succès"
+    count = 0
+    rows = []
+
+    try:
+        mysqldb = mysql.connector.connect(**DB_CONFIG)
+        cursor = mysqldb.cursor(dictionary=True)
+        cursor.execute('''  SELECT AVG(r.score) AS score_moyen
+                            FROM big_data_project.resultats r
+                            WHERE r.id_user = %s
+                            ;''', (id_user,))
+
+        rows = cursor.fetchall()
+        count = cursor.rowcount
+
+        cursor.close()
+
+    except:
+        success = False
+        message = "Erreur lors de la récupération du score moyen."
+
+    return {
+        "success": success,
+        "message": message,
+        "data": {
+            'count': count,
+            'rows': rows
+        }
+    }
+
+@users.route('/quiz_created/<id_user>', methods=['GET'])
+def getQuizCreated(id_user):
+    success = True
+    message = "Nombre de quiz créés récupéré avec succès"
+    count = 0
+    rows = []
+
+    try:
+        mysqldb = mysql.connector.connect(**DB_CONFIG)
+        cursor = mysqldb.cursor(dictionary=True)
+        cursor.execute('''  SELECT COUNT(q.id) AS nb_quiz_cree
+                            FROM big_data_project.quiz q
+                            WHERE q.id_user = 1 AND q.id_statut = %s
+                            ;''', (id_user,))
+
+        rows = cursor.fetchall()
+        count = cursor.rowcount
+
+        cursor.close()
+
+    except:
+        success = False
+        message = "Erreur lors de la récupération du nombre de quiz créés."
+
+    return {
+        "success": success,
+        "message": message,
+        "data": {
+            'count': count,
+            'rows': rows
+        }
+    }

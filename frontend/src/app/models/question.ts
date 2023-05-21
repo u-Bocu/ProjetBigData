@@ -1,5 +1,5 @@
-import {Quiz} from "./quiz";
-import {Reponse} from "./reponse";
+import { Quiz } from "./quiz";
+import { Reponse } from "./reponse";
 
 export interface Question {
   id: number;
