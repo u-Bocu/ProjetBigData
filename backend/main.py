@@ -8,6 +8,7 @@ from routes.quiz import quiz
 from routes.questions import questions
 from routes.auth import auth
 from routes.users import users
+from routes.resultats import resultats
 
 app = Flask(__name__)
 CORS(app)
@@ -20,6 +21,7 @@ app.register_blueprint(auth, url_prefix='/api/auth')
 app.register_blueprint(users, url_prefix='/api/users')
 app.register_blueprint(roles, url_prefix='/api/roles')
 app.register_blueprint(reponses, url_prefix='/api/reponses')
+app.register_blueprint(resultats, url_prefix='/api/resultats')
 
 if __name__ == "__main__":
     app.run()
