@@ -5,6 +5,10 @@ import {ActivatedRoute} from "@angular/router";
 import {Question} from "../../models/question";
 import {ReponseService} from "../../services/reponse.service";
 import {Reponse} from "../../models/reponse";
+import {AudioRecordingService} from "../../services/audio-recording.service";
+import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
+import {ResultatService} from "../../services/resultat.service";
+import {LocalStorageService} from "../../services/local-storage.service";
 
 @Component({
   selector: 'app-quiz',
@@ -14,6 +18,7 @@ import {Reponse} from "../../models/reponse";
 export class QuizComponent {
   public questions: Array<Question> = [];
   public loading: boolean = false;
+  public idQuestion?: number;
   public choix: number = 0;
   public afficheReponse: boolean = false;
   public resultatReponse: boolean = false;
@@ -22,16 +27,28 @@ export class QuizComponent {
   public boutonEchec: number = 0;
   public isComplete: boolean = false;
   public score: string = '';
+  public idQuiz: number = 0;
+  public idUser: number | null;
+  public satisfaction: number = 0;
+
+  public isRecording = false;
+  public recordedTime: any;
+  public blobUrl?: SafeUrl;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
     private questionService: QuestionService,
     private reponseService: ReponseService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private audioRecordingService: AudioRecordingService,
+    private sanitizer: DomSanitizer,
+    private resultatService: ResultatService,
+    private localStorageService: LocalStorageService
   ) {
-    const idQuiz: number = this.route.snapshot.paramMap.get('idQuiz') as unknown as number;
+    this.idUser = this.localStorageService.getData('user_id') ? parseInt(this.localStorageService.getData('user_id')) : null;
+    this.idQuiz = this.route.snapshot.paramMap.get('idQuiz') as unknown as number;
     this.loading = true;
-    questionService.getQuestionsByQuiz(idQuiz).subscribe(response => {
+    questionService.getQuestionsByQuiz(this.idQuiz).subscribe(response => {
       this.questions = response.data.rows;
 
       this.questions.forEach(question => {
@@ -41,14 +58,35 @@ export class QuizComponent {
         });
       })
     });
+
+    // Audio
+    this.audioRecordingService.recordingFailed().subscribe(() => {
+      this.isRecording = false;
+    });
+
+    this.audioRecordingService.getRecordedTime().subscribe((time) => {
+      this.recordedTime = time;
+    });
+
+    this.audioRecordingService.getRecordedBlob().subscribe((data) => {
+      this.blobUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(data.blob));
+
+      // Envoi le fichier audio à l'API
+      this.loading = true;
+      this.audioRecordingService.convertFileToBase64(new File([data.blob], 'audio.mp3'))
+        .then((base64String: string) => {
+          this.reponseService.sendReponseVocale(this.idQuestion!, base64String).subscribe(response => {
+            this.choix = response.data.rows.choix
+            this.isRecording = false;
+            this.loading = false;
+          });
+        });
+    });
   }
 
-  public confirmationQuestion(idQuestion: number, vocal: string): void {
-    this.loading = true;
-    this.reponseService.sendReponseVocale(idQuestion, vocal).subscribe(response => {
-      this.choix = response.data.rows.choix
-      this.loading = false;
-    });
+  public confirmationQuestion(idQuestion: number): void {
+    this.idQuestion = idQuestion;
+    this.startRecording();
   }
 
   public validationQuestion(reponses: Array<Reponse>): void {
@@ -87,5 +125,36 @@ export class QuizComponent {
     this.afficheReponse = false;
     this.isComplete = true;
     this.score = String(this.resultats.filter(Boolean).length) + ' / 10';
+  }
+
+  public sendResultats(satisfaction: number): void {
+    this.satisfaction = satisfaction;
+    this.resultatService.postResultatQuiz(this.idQuiz, this.idUser, this.resultats.filter(Boolean).length, satisfaction).subscribe(() => {
+      console.log("Résultat envoyé.");
+    })
+  }
+
+
+  /* Fonctions Audio */
+  public startRecording(): void {
+    this.clearRecordedData();
+
+    this.isRecording = true;
+    this.audioRecordingService.startRecording();
+    this.delay(3000).then(() => {
+      this.stopRecording();
+    });
+  }
+
+  public stopRecording(): void {
+    this.audioRecordingService.stopRecording();
+  }
+
+  public clearRecordedData(): void {
+    this.blobUrl = undefined;
+  }
+
+  async delay(ms: number) {
+    await new Promise<void>(resolve => setTimeout(()=>resolve(), ms)).then(()=>console.log("Fin d'enregistrement."));
   }
 }

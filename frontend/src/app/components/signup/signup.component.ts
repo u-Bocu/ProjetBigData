@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
-import {Md5} from 'ts-md5';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AuthService} from 'src/app/services/auth.service';
-import {Router} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
+import { Component } from '@angular/core';
+import { Md5 } from 'ts-md5';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'signup',

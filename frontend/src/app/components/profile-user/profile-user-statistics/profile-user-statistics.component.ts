@@ -6,7 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./profile-user-statistics.component.css']
 })
 export class ProfileUserStatisticsComponent {
-  public loading: boolean = false;
 
-  constructor() {}
 }

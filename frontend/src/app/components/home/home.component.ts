@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {LocalStorageService} from "../../services/local-storage.service";
-import {EventService} from "../../services/event.service";
+import { LocalStorageService } from "../../services/local-storage.service";
+import { EventService } from "../../services/event.service";
 
 @Component({
   selector: 'app-home',

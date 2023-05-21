@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {environment} from "../environnement";
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { environment } from "../environnement";
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +18,10 @@ export class ReponseService {
     );
   }
 
-  public sendReponseVocale(idQuestion?: number, vocal?: string): Observable<any> {
+  public sendReponseVocale(idQuestion: number, base64File: string): Observable<any> {
     return this.http.post(
       environment.API_URL + '/reponses/' + idQuestion,
-      {vocal: vocal},
+      {base64File: base64File},
       {headers: environment.HEADERS}
     );
   }

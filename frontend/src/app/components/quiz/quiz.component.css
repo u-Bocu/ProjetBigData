@@ -74,6 +74,10 @@
   font-weight: bold;
 }
 
+audio {
+  height: 30px;
+}
+
 /* Stepper */
 mat-horizontal-stepper {
   background-color: #fafafa;

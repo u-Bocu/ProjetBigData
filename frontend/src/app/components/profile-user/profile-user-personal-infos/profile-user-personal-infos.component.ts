@@ -3,10 +3,10 @@ import { User } from "../../../models/user";
 import { UserService } from "../../../services/user.service";
 import { LocalStorageService} from "../../../services/local-storage.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import {RoleService} from "../../../services/role.service";
-import {Role} from "../../../models/role";
-import {Theme} from "../../../models/theme";
-import {ThemeService} from "../../../services/theme.service";
+import { RoleService } from "../../../services/role.service";
+import { Role } from "../../../models/role";
+import { Theme } from "../../../models/theme";
+import {ThemeService } from "../../../services/theme.service";
 
 @Component({
   selector: 'app-profile-user-personal-infos',

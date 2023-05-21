@@ -1,5 +1,5 @@
-import {Theme} from "./theme";
-import {User} from "./user";
+import { Theme } from "./theme";
+import { User } from "./user";
 
 export interface Quiz {
   id: number;
