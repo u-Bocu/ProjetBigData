@@ -7,24 +7,30 @@ from keras.optimizers import Adam
 
 # Preprocess function
 def preprocess_audio():
-    audio, sample_rate = librosa.load('input.wav', sr=None)  # Read the audio file
+    max_len = 200
+    y, sr = librosa.load('input.wav', sr=None)  # Read the audio file
 
-    # Resample the audio to the desired sample rate (if necessary)
-    desired_sample_rate = 44100  # Example desired sample rate
-    resampled_audio = librosa.resample(y=audio, orig_sr=sample_rate, target_sr=desired_sample_rate)
+    # Trim the audio file to remove leading/trailing silence
+    y, _ = librosa.effects.trim(y)
 
-    # Normalize the audio to the range [-1, 1]
-    normalized_audio = resampled_audio / np.max(np.abs(resampled_audio))
+    # Compute MFCC
+    mfccs = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=13)  # n_mfcc: nombre de coefficients MFCC à conserver
 
-    # Adjust the desired length to match the available audio length
-    desired_length = min(len(normalized_audio), 128 * 550)
-
-    # Slice or pad the audio to match the desired length
-    processed_audio = np.zeros((desired_length,))
-    processed_audio[:len(normalized_audio)] = normalized_audio[:desired_length]
+    # Pad/truncate MFCCs
+    if mfccs.shape[1] < max_len:
+        pad_width = max_len - mfccs.shape[1]
+        mfccs = np.pad(mfccs, pad_width=((0, 0), (0, pad_width)), mode='constant')
+    else:
+        mfccs = mfccs[:, :max_len]
 
     # Reshape the audio to match the expected input shape
-    return np.reshape(processed_audio, (1, 128, 550))
+    return np.reshape(mfccs.T, (1, 200, 13))
+
+
+def preprocess_data(X, y):
+    X = np.array((X - np.mean(X)) / np.std(X))
+    y = np.array(y)
+    return X, y
 
 
 # Predict function
