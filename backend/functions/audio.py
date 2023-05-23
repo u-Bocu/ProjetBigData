@@ -42,7 +42,7 @@ def predict_audio(base64_file):
         file.write(audio_data)
 
     # Step 2: Load the Keras model
-    model_path = r'assets\model.h5'
+    model_path = r'assets/model.h5'
     model = load_model(model_path, custom_objects={'CustomAdam': Adam})
 
     # Step 3: Preprocess the audio

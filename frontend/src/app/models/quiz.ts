@@ -10,3 +10,10 @@ export interface Quiz {
   user: User;
   lien_image: string;
 }
+
+export class Quiz {
+  constructor(
+    public label: string,
+    public lien_image: string
+  ) {}
+}

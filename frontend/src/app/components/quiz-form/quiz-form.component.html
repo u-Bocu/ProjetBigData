@@ -1,17 +1,79 @@
 <h1>Créer un quiz</h1>
 
-<mat-grid-list [gridCols]="{xs: 1, sm: 2, md: 3, lg: 3, xl: 3}" rowHeight="90px">
-  <mat-grid-tile [colspan]="3">
 
-    <mat-card class="card">
-      <mat-card-header>
-        <mat-card-title>
-        </mat-card-title>
-      </mat-card-header>
+<form [formGroup]="form">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>
+        Informations générales
+      </mat-card-title>
+    </mat-card-header>
 
-      <mat-card-content class="card-content">
-      </mat-card-content>
-    </mat-card>
+    <mat-card-content class="card-content">
+      <mat-grid-list [gridCols]="{xs: 6, sm: 9, md: 12, lg: 12, xl: 12}" rowHeight="70px">
+        <mat-grid-tile [gridColspan]="{xs: 6, sm: 9, md: 12, lg: 12, xl: 12}">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Nom du quiz</mat-label>
+            <input matInput autocomplete="on" formControlName="nom_quiz">
+          </mat-form-field>
+        </mat-grid-tile>
 
-  </mat-grid-tile>
-</mat-grid-list>
+        <mat-grid-tile [gridColspan]="{xs: 6, sm: 9, md: 12, lg: 12, xl: 12}">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Lien Image Quiz</mat-label>
+            <input matInput autocomplete="on" formControlName="lien_image_quiz">
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="card" *ngFor="let card of cards; index as i">
+    <mat-card-header>
+      <mat-card-title>
+        Question {{i + 1}}
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content class="card-content">
+      <mat-grid-list [gridCols]="{xs: 6, sm: 9, md: 12, lg: 12, xl: 12}" rowHeight="70px">
+        <mat-grid-tile [gridColspan]="{xs: 6, sm: 9, md: 12, lg: 12, xl: 12}">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Question</mat-label>
+            <input matInput autocomplete="on" formControlName="question{{i+1}}">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 6, sm: 9, md: 12, lg: 12, xl: 12}">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Lien Image</mat-label>
+            <input matInput autocomplete="on" formControlName="lien_image_question{{i+1}}">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 2, sm: 2, md: 2, lg: 2, xl: 2}" rowspan="4">
+          <mat-radio-group formControlName="radio{{i+1}}">
+            <mat-radio-button value="1">Bonne réponse</mat-radio-button>
+            <mat-radio-button value="2">Bonne réponse</mat-radio-button>
+            <mat-radio-button value="3">Bonne réponse</mat-radio-button>
+            <mat-radio-button value="4">Bonne réponse</mat-radio-button>
+          </mat-radio-group>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 4, sm: 7, md: 10, lg: 10, xl: 10}" *ngFor="let reponse of reponses; index as j">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Réponse {{j + 1}}</mat-label>
+            <input matInput autocomplete="on" formControlName="reponse{{i+1}}_{{j+1}}">
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [gridColspan]="{xs: 6, sm: 9, md: 12, lg: 12, xl: 12}" *ngIf="i+1 == 10" class="submit">
+          <button type="submit" mat-raised-button color="primary" class="btn btn-primary" (click)="submit()">Valider
+          </button>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card-content>
+  </mat-card>
+
+</form>
+
