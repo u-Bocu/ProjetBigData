@@ -1,1 +1,3 @@
-<p>profile-user-statistics works!</p>
+<mat-spinner [hidden]="!loading" class="loader"></mat-spinner>
+
+<div echarts class="chart" [options]="chartOptions"></div>

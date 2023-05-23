@@ -2,6 +2,132 @@
 
 <mat-card class="quiz-created-card">
   <mat-card-content class="quiz-created-card-content">
-    Partie quiz-created
-  </mat-card-content>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Derniers quiz créés
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-card class="quiz-created-card">
+    <mat-card-content class="quiz-created-card-content">
+      <table class="quiz-table">
+        <tr>
+          <th>Thème</th>
+          <th>Quiz</th>
+          <th>État</th>
+          <th>Date de création</th>
+        </tr>
+        <tr *ngFor="let quiz of history_quiz_created.slice(0, 5)">
+          <td>
+            <div class="block">
+              <h2>{{quiz?.Theme}}</h2>
+            </div>
+          </td>
+          <td>
+            <div class="block">
+              <h2>{{quiz?.Quiz}}</h2>
+            </div>
+          </td>
+          <td>
+            <div class="block">
+              <h2>{{quiz?.Etat}}</h2>
+            </div>
+          </td>
+          <td>
+            <div class="block">
+              <h2>{{quiz?.Date_creation | date:'dd/MM/y hh:mm:ss'}}</h2>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </mat-card-content>
+    </mat-card>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Premiers quiz créés
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-card class="quiz-created-card">
+      <mat-card-content class="quiz-created-card-content">
+        <table class="quiz-table">
+          <tr>
+            <th>Thème</th>
+            <th>Quiz</th>
+            <th>État</th>
+            <th>Date de création</th>
+          </tr>
+          <tr *ngFor="let quiz of history_quiz_created.slice(-5)">
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Theme}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Quiz}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Etat}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Date_creation | date:'dd/MM/y hh:mm:ss'}}</h2>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>  
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Tous les quiz créés
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card class="quiz-created-card">
+      <mat-card-content class="quiz-created-card-content">
+        <table class="quiz-table">
+          <tr>
+            <th>Thème</th>
+            <th>Quiz</th>
+            <th>État</th>
+            <th>Date de création</th>
+          </tr>
+          <tr *ngFor="let quiz of history_quiz_created">
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Theme}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Quiz}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Etat}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Date_creation | date:'dd/MM/y hh:mm:ss'}}</h2>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </mat-expansion-panel>
+</mat-card-content>
 </mat-card>
