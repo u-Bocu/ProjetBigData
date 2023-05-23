@@ -48,4 +48,12 @@ export class UserService {
       {headers: environment.HEADERS}
     );
   }
+
+  public getGraphAvgScoreByTheme(idUser?: number): Observable<any> {
+    const url = '/users/graph_avg_score_by_theme/' + idUser;
+    return  this.http.get(
+      environment.API_URL + url,
+      {headers: environment.HEADERS}
+    );
+  }
 }

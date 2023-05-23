@@ -1,5 +1,5 @@
 import * as echarts from 'echarts/core';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { LocalStorageService } from "../../../services/local-storage.service";
 import { GridComponent, GridComponentOption } from 'echarts/components';
@@ -27,12 +27,11 @@ export class ProfileUserStatisticsComponent /*implements OnInit*/ {
     const idUser: number = parseInt(this.localStorageService.getData('user_id')) as unknown as number;
 
     this.loading = true;
-    this.userService.getHistoryResult(idUser).subscribe(response => {
+    this.userService.getGraphAvgScoreByTheme(idUser).subscribe(response => {
       this.statistics = response.data.rows;
       this.loading = false;
     });
   }
-
 
 /*
   ngOnInit(): void {
