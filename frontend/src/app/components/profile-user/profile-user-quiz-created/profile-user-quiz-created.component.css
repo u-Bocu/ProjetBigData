@@ -3,10 +3,6 @@
   border: 1px solid #3F51B5;
 }
 
-.quiz-created-card mat-card {
-  background-color: #3F51B5; /*A suppr si moche*/
-}
-
 .loader {
   margin:auto;
   left:0;

@@ -1,29 +1,153 @@
 <mat-spinner [hidden]="!loading" class="loader"></mat-spinner>
 
-<mat-card class="quiz-history-card">
-  <mat-card-content class="quiz-history-card-content">
-    Partie quiz-history<br>
-    {{results[0]?.Theme}}
-    {{results[0]?.Quiz}}
-    {{results[0]?.Score}}
-    {{results[0]?.Date}}
-    {{results[0]?.Note}}
-    {{results[1]?.Theme}}
-    {{results[1]?.Quiz}}
-    {{results[1]?.Score}}
-    {{results[1]?.Date}}
-    {{results[1]?.Note}}
-    {{results[2]?.Theme}}
-    {{results[2]?.Quiz}}
-    {{results[2]?.Score}}
-    {{results[2]?.Date}}
-    {{results[2]?.Note}}
-    {{results[3]?.Theme}}
-    {{results[3]?.Quiz}}
-    {{results[3]?.Score}}
-    {{results[3]?.Date}}
-    {{results[3]?.Note}}
-  </mat-card-content>
+<mat-card class="quiz-created-card">
+  <mat-card-content class="quiz-created-card-content">
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Derniers quiz joués
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-card class="quiz-created-card">
+    <mat-card-content class="quiz-created-card-content">
+      <table class="quiz-table">
+        <tr>
+          <th>Thème</th>
+          <th>Quiz</th>
+          <th>Score</th>
+          <th>Date</th>
+          <th>Note</th>
+        </tr>
+        <tr *ngFor="let quiz of results.slice(0, 5)">
+          <td>
+            <div class="block">
+              <h2>{{quiz?.Theme}}</h2>
+            </div>
+          </td>
+          <td>
+            <div class="block">
+              <h2>{{quiz?.Quiz}}</h2>
+            </div>
+          </td>
+          <td>
+            <div class="block">
+              <h2>{{quiz?.Score}}</h2>
+            </div>
+          </td>
+          <td>
+            <div class="block">
+              <h2>{{quiz?.Date | date:'dd/MM/y hh:mm:ss'}}</h2>
+            </div>
+          </td>
+          <td>
+            <div class="block">
+              <h2>{{quiz?.Note}}</h2>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </mat-card-content>
+    </mat-card>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Premiers quiz joués
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <mat-card class="quiz-created-card">
+      <mat-card-content class="quiz-created-card-content">
+        <table class="quiz-table">
+          <tr>
+            <th>Thème</th>
+            <th>Quiz</th>
+            <th>Score</th>
+            <th>Date</th>
+            <th>Note</th>
+          </tr>
+          <tr *ngFor="let quiz of results.slice(-5)">
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Theme}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Quiz}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Score}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Date | date:'dd/MM/y hh:mm:ss'}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Note}}</h2>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>  
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Tous les quiz joués
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-card class="quiz-created-card">
+      <mat-card-content class="quiz-created-card-content">
+        <table class="quiz-table">
+          <tr>
+            <th>Thème</th>
+            <th>Quiz</th>
+            <th>Score</th>
+            <th>Date</th>
+            <th>Note</th>
+          </tr>
+          <tr *ngFor="let quiz of results">
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Theme}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Quiz}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Score}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Date | date:'dd/MM/y hh:mm:ss'}}</h2>
+              </div>
+            </td>
+            <td>
+              <div class="block">
+                <h2>{{quiz?.Note}}</h2>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </mat-expansion-panel>
+</mat-card-content>
 </mat-card>
 
 

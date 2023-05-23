@@ -1,23 +1,6 @@
-h1 {
-  margin: 15px;
-}
-
-.quiz-history-card {
-  width: 100%;
-  height: 100%;
-}
-
-.quiz-history-card mat-card-header {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.quiz-history-card mat-card-title {
-  font-size: 25px;
+.mat-expansion-panel {
+  margin-top: 20px;
+  border: 1px solid #3F51B5;
 }
 
 .loader {
@@ -29,3 +12,30 @@ h1 {
   position:absolute;
   z-index: 5;
 }
+
+.quiz-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.quiz-table td {
+  padding: 5px;
+  text-align: center;
+}
+
+.quiz-table th {
+  text-align: center;
+  padding: 5px;
+  background-color: #3F51B5;
+  color: white;
+  font-size: large;
+}
+
+.block {
+  background-color: #f2f2f2;
+  border-radius: 10px;
+  height: 30px;
+}
+
+
+
