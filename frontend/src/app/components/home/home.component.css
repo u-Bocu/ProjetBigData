@@ -19,3 +19,9 @@
 carousel {
   width: 100%;
 }
+
+button {
+  font-size: 30px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+}
