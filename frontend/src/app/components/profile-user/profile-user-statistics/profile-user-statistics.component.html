@@ -1,31 +1,3 @@
 <mat-spinner [hidden]="!loading" class="loader"></mat-spinner>
 
-<div #chart style="width: 600px;height:400px;"></div>
-
-<mat-card class="quiz-created-card">
-  <mat-card-content class="quiz-created-card-content">
-  
-    <mat-card class="quiz-created-card">
-    <mat-card-content class="quiz-created-card-content">
-      <table class="quiz-table">
-        <tr>
-          <th>Thème</th>
-          <th>Score moyen</th>
-        </tr>
-        <tr *ngFor="let stat of statistics">
-          <td>
-            <div class="block">
-              <h2>{{stat?.Theme}}</h2>
-            </div>
-          </td>
-          <td>
-            <div class="block">
-              <h2>{{stat?.Score_moyen}}</h2>
-            </div>
-          </td>
-        </tr>
-      </table>
-    </mat-card-content>
-    </mat-card>
-  </mat-card-content>
-</mat-card>
+<div echarts class="chart" [options]="chartOptions"></div>

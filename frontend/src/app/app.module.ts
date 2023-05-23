@@ -44,6 +44,7 @@ import { ProfileUserStatisticsComponent } from './components/profile-user/profil
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatExpansionModule } from  '@angular/material/expansion';
+import {NgxEchartsModule} from "ngx-echarts";
 
 @NgModule({
   declarations: [
@@ -92,7 +93,10 @@ import { MatExpansionModule } from  '@angular/material/expansion';
         MatProgressSpinnerModule,
         MatTabsModule,
         MatTooltipModule,
-        MatExpansionModule
+        MatExpansionModule,
+        NgxEchartsModule.forRoot({
+          echarts: () => import('echarts')
+        })
     ],
   providers: [],
   bootstrap: [AppComponent]

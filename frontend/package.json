@@ -23,7 +23,7 @@
     "bootstrap": "^5.2.3",
     "echarts": "^5.4.0",
     "ngx-bootstrap": "^10.2.0",
-    "ngx-echarts": "^15.0.1",
+    "ngx-echarts": "^15.0.3",
     "ngx-owl-carousel-o": "^15.0.0",
     "ngx-toastr": "^16.0.2",
     "rxjs": "~7.6.0",
