@@ -175,22 +175,47 @@ def getHistoryQuizCreated(id_user):
         rows = cursor.fetchall()
         count = cursor.rowcount
 
-        #for row in rows:
-            # Récupérer la date de la base de données
-            #date_creation = row['date_creation']
-            # Convertir la date en objet datetime si elle n'est pas déjà au bon format
-            #if isinstance(date_creation, str):
-            #    date_creation = datetime.datetime.strptime(date_creation, '%Y-%m-%%d')
-            # Formater la date dans le format "JJ-MM-AAAA"
-            #formatted_date = date_creation.strftime('%%d-%m-%Y')
-            # Mettre à jour la valeur de la clé 'date_creation' avec la date formatée
-            #row['date_creation'] = formatted_date
-
         cursor.close()
 
     except:
         success = False
         message = "Erreur lors de la récupération des quiz créés."
+
+    return {
+        "success": success,
+        "message": message,
+        "data": {
+            'count': count,
+            'rows': rows
+        }
+    }
+
+@users.route('/graph_avg_score_by_theme/<id_user>', methods=['GET'])
+def getGraphAvgScoreByTheme(id_user):
+    success = True
+    message = "Moyenne des quiz par thème avec succès"
+    count = 0
+    rows = []
+
+    try:
+        mysqldb = mysql.connector.connect(**DB_CONFIG)
+        cursor = mysqldb.cursor(dictionary=True)
+        cursor.execute('''  SELECT t.label as Theme, avg(r.score) as Score_moyen
+                            FROM big_data_project.resultats r
+                                JOIN big_data_project.quiz q on q.id = r.id_quiz
+                                JOIN big_data_project.themes t on q.id_theme = t.id
+                            WHERE r.id_user = %s
+                            GROUP BY t.label; 
+                        ''', (id_user,))
+
+        rows = cursor.fetchall()
+        count = cursor.rowcount
+
+        cursor.close()
+
+    except:
+        success = False
+        message = "Erreur lors de la récupération moyenne des quiz par thème."
 
     return {
         "success": success,
