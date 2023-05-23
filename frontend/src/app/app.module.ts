@@ -43,6 +43,7 @@ import { ProfileUserQuizCreatedComponent } from './components/profile-user/profi
 import { ProfileUserStatisticsComponent } from './components/profile-user/profile-user-statistics/profile-user-statistics.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatExpansionModule } from  '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { MatTooltipModule } from "@angular/material/tooltip";
         ReactiveFormsModule,
         MatProgressSpinnerModule,
         MatTabsModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatExpansionModule
     ],
   providers: [],
   bootstrap: [AppComponent]

@@ -45,9 +45,11 @@
   </div>
 </div>
 -->
-
-<div class="container">
-    <div class="column">
+<mat-spinner [hidden]="!loading" class="loader"></mat-spinner>
+<mat-card class="quiz-created-card">
+  <mat-card-content class="quiz-created-card-content">
+    <div class="container">
+      <div class="column">
       <div class="column-wrapper">
         <h2>Global</h2>
         <div class="block">
@@ -59,8 +61,8 @@
           <p><b>Total</b><br><span #quizCreatedElement id="quiz-created">{{ kpi_quiz_created[0]?.nb_quiz_cree }}</span></p>
         </div>
       </div>
-    </div>
-    <div class="column">
+      </div>
+      <div class="column">
       <div class="column-wrapper">
         <h2>Thème</h2>
         <div class="block">
@@ -72,8 +74,8 @@
           <p><b>{{ kpi_worse_theme[0]?.theme }}</b><br><span #worseThemeScoreElement id="worse-theme-score">{{ kpi_worse_theme[0]?.score_moyen }}</span></p>
         </div>
       </div>
-    </div>
-    <div class="column">
+      </div>
+      <div class="column">
       <div class="column-wrapper">
         <h2>Quiz</h2>
         <div class="block">
@@ -85,6 +87,7 @@
           <p><b>{{ kpi_worse_quiz[0]?.label }}</b><br><span #worseQuizScoreElement id="worse-quiz-score">{{ kpi_worse_quiz[0]?.score }}</span></p>
         </div>
       </div>
+      </div>
     </div>
-  </div>
-  
+  </mat-card-content>
+</mat-card>  

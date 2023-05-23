@@ -85,7 +85,7 @@ export class ProfileUserKPIComponent implements OnInit {
 
   startNumberAnimation(element: HTMLElement, targetValue: number) {
     const duration = 2000;
-    const steps = 1500; //à modifier pour modifier le temps que mettent les valeurs à s'incrémenter
+    const steps = 500; //à modifier pour modifier le temps que mettent les valeurs à s'incrémenter
     const increment = targetValue / steps;
 
     if (!isNaN(targetValue)) {
