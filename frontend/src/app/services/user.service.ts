@@ -32,4 +32,28 @@ export class UserService {
       {headers: environment.HEADERS}
     );
   }
+
+  public getHistoryResult(idUser?: number): Observable<any> {
+    const url = '/users/history_result/' + idUser;
+    return  this.http.get(
+      environment.API_URL + url,
+      {headers: environment.HEADERS}
+    );
+  }
+
+  public getHistoryQuizCreated(idUser?: number): Observable<any> {
+    const url = '/users/history_quiz_created/' + idUser;
+    return  this.http.get(
+      environment.API_URL + url,
+      {headers: environment.HEADERS}
+    );
+  }
+
+  public getGraphAvgScoreByTheme(idUser?: number): Observable<any> {
+    const url = '/users/graph_avg_score_by_theme/' + idUser;
+    return  this.http.get(
+      environment.API_URL + url,
+      {headers: environment.HEADERS}
+    );
+  }
 }

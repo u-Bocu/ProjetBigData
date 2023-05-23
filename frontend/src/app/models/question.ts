@@ -9,3 +9,11 @@ export interface Question {
   creation_date: Date;
   reponses: Array<Reponse>;
 }
+
+export class Question {
+  constructor(
+    public question: string,
+    public lien_image: string,
+    public reponses: Array<Reponse>
+  ) {}
+}

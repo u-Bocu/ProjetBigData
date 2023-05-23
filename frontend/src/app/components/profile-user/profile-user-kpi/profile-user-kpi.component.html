@@ -1,53 +1,8 @@
-<!-- <mat-spinner [hidden]="!loading" class="loader"></mat-spinner>
-
-<mat-card class="statistics-card">
-  <mat-card-content class="statistics-card-content">
-    Partie statistics
-  </mat-card-content>
-  <mat-option *ngFor="let kpi of kpi_best_quiz">{{kpi.label}}<br>{{kpi.score}}</mat-option>
-  <mat-option *ngFor="let kpi2 of kpi_worse_quiz">{{kpi2.label}}<br>{{kpi2.score}}</mat-option>
-  <mat-option *ngFor="let kpi3 of kpi_best_theme">{{kpi3.theme}}<br>{{kpi3.score_moyen}}</mat-option>
-  <mat-option *ngFor="let kpi4 of kpi_worse_theme">{{kpi4.theme}}<br>{{kpi4.score_moyen}}</mat-option>
-  <mat-option *ngFor="let kpi5 of kpi_avg_score">{{kpi5.score_moyen}}</mat-option>
-  <mat-option *ngFor="let kpi6 of kpi_quiz_created">{{kpi6.nb_quiz_cree}}</mat-option>
-</mat-card> 
-
-<div class="container">
-  <div class="column">
-    <div class="block">
-      <h2>Global</h2>
-      <p>{{kpi_best_quiz[0].label}}<br>{{kpi_best_quiz[0].score}}</p>
-    </div>
-    <div class="block">
-      <h2>Global</h2>
-      <p>{{kpi_worse_quiz[0].label}}<br>{{kpi_worse_quiz[0].score}}</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="block">
-      <h2>Thème</h2>
-      <p>{{kpi_best_theme[0].theme}}<br>{{kpi_best_theme[0].score_moyen}}</p>
-    </div>
-    <div class="block">
-      <h2>Thème</h2>
-      <p>{{kpi_worse_theme[0].theme}}<br>{{kpi_worse_theme[0].score_moyen}}</p>
-    </div>
-  </div>
-  <div class="column">
-    <div class="block">
-      <h2>Quiz</h2>
-      <p>{{kpi_avg_score[0].score_moyen}}</p>
-    </div>
-    <div class="block">
-      <h2>Quiz</h2>
-      <p>{{kpi_quiz_created[0].nb_quiz_cree}}</p>
-    </div>
-  </div>
-</div>
--->
-
-<div class="container">
-    <div class="column">
+<mat-spinner [hidden]="!loading" class="loader"></mat-spinner>
+<mat-card class="quiz-created-card">
+  <mat-card-content class="quiz-created-card-content">
+    <div class="container">
+      <div class="column">
       <div class="column-wrapper">
         <h2>Global</h2>
         <div class="block">
@@ -59,8 +14,8 @@
           <p><b>Total</b><br><span #quizCreatedElement id="quiz-created">{{ kpi_quiz_created[0]?.nb_quiz_cree }}</span></p>
         </div>
       </div>
-    </div>
-    <div class="column">
+      </div>
+      <div class="column">
       <div class="column-wrapper">
         <h2>Thème</h2>
         <div class="block">
@@ -72,8 +27,8 @@
           <p><b>{{ kpi_worse_theme[0]?.theme }}</b><br><span #worseThemeScoreElement id="worse-theme-score">{{ kpi_worse_theme[0]?.score_moyen }}</span></p>
         </div>
       </div>
-    </div>
-    <div class="column">
+      </div>
+      <div class="column">
       <div class="column-wrapper">
         <h2>Quiz</h2>
         <div class="block">
@@ -85,6 +40,7 @@
           <p><b>{{ kpi_worse_quiz[0]?.label }}</b><br><span #worseQuizScoreElement id="worse-quiz-score">{{ kpi_worse_quiz[0]?.score }}</span></p>
         </div>
       </div>
+      </div>
     </div>
-  </div>
-  
+  </mat-card-content>
+</mat-card>  

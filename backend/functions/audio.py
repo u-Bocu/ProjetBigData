@@ -27,10 +27,11 @@ def preprocess_audio():
     return np.reshape(mfccs.T, (1, 200, 13))
 
 
-def preprocess_data(X, y):
-    X = np.array((X - np.mean(X)) / np.std(X))
-    y = np.array(y)
-    return X, y
+def preprocess_data(X):
+    mean = -15.800911
+    std = 101.175186
+    X = np.array((X - mean) / std)
+    return X
 
 
 # Predict function
@@ -41,15 +42,17 @@ def predict_audio(base64_file):
         file.write(audio_data)
 
     # Step 2: Load the Keras model
-    model_path = r'assets\model.h5'
+    model_path = r'assets/model.h5'
     model = load_model(model_path, custom_objects={'CustomAdam': Adam})
 
     # Step 3: Preprocess the audio
     input_data = preprocess_audio()
+    input_data = preprocess_data(input_data)
 
     # Step 4: Make predictions using the Keras model
-    word_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'firefox', 'oui', 'non']
+    word_list = [1, 2, 3, 4]
     prediction = model.predict(input_data)[0]
+    print(prediction)
     predicted_index = np.argmax(prediction)
     recognized_word = word_list[predicted_index]
 

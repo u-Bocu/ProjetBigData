@@ -6,3 +6,10 @@ export interface Reponse {
   is_valid: boolean;
   question: Question;
 }
+
+export class Reponse {
+  constructor(
+    public label: string,
+    public is_valid: boolean
+  ) {}
+}
