@@ -28,8 +28,8 @@ def preprocess_audio():
 
 
 def preprocess_data(X):
-    mean = -17.918066
-    std = 106.18942
+    mean = -15.800911
+    std = 101.175186
     X = np.array((X - mean) / std)
     return X
 
@@ -50,7 +50,7 @@ def predict_audio(base64_file):
     input_data = preprocess_data(input_data)
 
     # Step 4: Make predictions using the Keras model
-    word_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'firefox', 'oui', 'non']
+    word_list = [1, 2, 3, 4]
     prediction = model.predict(input_data)[0]
     print(prediction)
     predicted_index = np.argmax(prediction)
