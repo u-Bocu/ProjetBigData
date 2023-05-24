@@ -43,7 +43,7 @@
 * Backend : Python - API Flask
 
 ### <span style="color:#FFE15D"><u>Interface utilisateur :</u></span>
-* NON CONNECTÉ :
+* FONCTIONNALITES AVEC UN UTILISATEUR NON CONNECTÉ :
   * Possibilité de lancer les mêmes quiz que les utilisateurs connectés
   * Possibilité de consulter le dashboard global qui contient de la data visualisation
   * Les données sont recueillies dans un but de data visualisation
@@ -52,7 +52,7 @@
   * Impossible de créer des quiz personnalisés
   
 
-* CONNECTÉ :
+* FONCTIONNALITES AVEC UN UTILISATEUR CONNECTÉ :
   * Possibilité de lancer les quiz
   * Possibilité de consulter le dashboard global qui contient de la data visualisation
   * Les données sont recueillies dans un but de data visualisation
