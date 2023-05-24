@@ -1,68 +1,141 @@
 # <span style="color:#DC3535">>Projet Big Data<</span>
 
-## <span style="color:#F49D1A">0- Brainstorming </span>
-<br>
+## <span style="color:#F49D1A">0 - Brainstorming </span>
+### <span style="color:#FFE15D"><u>Répartition :</u></span>
+* Partie Cloud : Quentin RICHARD
+* Partie Machine Learning : Matthieu REMOND
+* Partie Dev Web : Mathieu MAISONNETTE
+* Partie Dev Web & Datavisualisation : Julien MUGUET
 
-## <span style="color:#F49D1A">I- Support/Application </span>
- 
-### <span style="color:#FFE15D"><u>Techno :</u></span>
-* Front: Angular<br>
-* Back: Python (Flask)<br>
-* Hébergement : AWS
+## <span style="color:#F49D1A">I - Partie Cloud </span>
+### <span style="color:#FFE15D"><u>Hébergeurs (ne pas mettre tous ses oeufs dans le même panier) :</u></span>
+* Azure Cloud
+  * Base de données MySQL
+* Google Cloud Platform
+  * Frontend (site Web)
+  * Backend (API Flask + modèle ML)
 
-### <span style="color:#FFE15D"><u>Interface user :</u></span>
-
-* Choisir un thème
-* Lancer un quiz
-* Creation compte
-    * Item création compte
-    * Formulaire infos perso
-* Connexion compte
-* Mdp oublié
-* Contacter admin
-    * Fomulaire de contact
-    * Signaler question ou réponse fausse
-* Exporter template quiz
-* Import template quiz
-
-### <span style="color:#FFE15D"><u>Interface Admin :</u></span>
-
-* Ajouter/supprimer quiz (archive ?)
-* Ajouter/supprimer user
-* Ticket ?
-
-## <span style="color:#F49D1A">II- BDD MySQL sur le cloud
-</span>
-
-### <span style="color:#FFE15D"><u>Tables :</u></span>
-
+### <span style="color:#FFE15D"><u>Structure base de données MySQL :</u></span>
 * <b><span style="color:#73777B">Quiz</span></b>
-    * id_quiz | name | id_theme | id_user | state | date_creation 
-* <b><span style="color:#73777B">Question</span></b>
-    * id_question | id_quiz | question | picture | id_answer | date_creation 
-* <b><span style="color:#73777B">User</span></b>
-    * id_user | login | password | age | sexe | id_theme_prefere | id_role 
-* <b><span style="color:#73777B">Role</span></b>
-    * id_role | name_role
-* <b><span style="color:#73777B">Theme</span></b>
-    * id_theme | name_theme
+  * id | label | id_statut | date_creation | id_theme | id_user | lien_image
+* <b><span style="color:#73777B">Questions</span></b>
+  * id | id_quiz | question | lien_image | date_creation
+* <b><span style="color:#73777B">Users</span></b>
+  * id | login | password | mail | age | sexe | id_theme_pref | id_role
+* <b><span style="color:#73777B">Roles</span></b>
+  * id | label
+* <b><span style="color:#73777B">Themes</span></b>
+  * id | label | lien_image
 * <b><span style="color:#73777B">Question_theme</span></b>
-    * id_question | id_theme
-* <b><span style="color:#73777B">Reponse</span></b>
-    * id_reponse | name_question | isValid | id_question
-* <b><span style="color:#73777B">Result</span></b>
-    * id_result | id_quiz | id_user | score | timestamp
+  * id_question | id_theme
+* <b><span style="color:#73777B">Reponses</span></b>
+  * id | label | is_valid | id_question
+* <b><span style="color:#73777B">Resultats</span></b>
+  * id | id_quiz | id_user | score | timestamp | id_satisfaction
+* <b><span style="color:#73777B">Satisfaction</span></b>
+  * id | label
+* <b><span style="color:#73777B">Statut_quiz</span></b>
+  * id | label
 
-## <span style="color:#F49D1A">III- Dataviz</span>
+## <span style="color:#F49D1A">II - Application Web </span>
+### <span style="color:#FFE15D"><u>Technologies :</u></span>
+* Frontend : Angular
+* Backend : Python - API Flask
 
-## <span style="color:#F49D1A">IV- IA</span>
+### <span style="color:#FFE15D"><u>Interface utilisateur :</u></span>
+* NON CONNECTÉ :
+  * Possibilité de lancer les mêmes quiz que les utilisateurs connectés
+  * Possibilité de consulter le dashboard global qui contient de la data visualisation
+  * Les données sont recueillies dans un but de data visualisation
+  * Impossible d'accéder à l'onglet Profil
+  * Impossible de lancer un quiz aléatoire
+  * Impossible de créer des quiz personnalisés
+  
 
-### <span style="color:#FFE15D"><u>Modèle :</u></span>
+* CONNECTÉ :
+  * Possibilité de lancer les quiz
+  * Possibilité de consulter le dashboard global qui contient de la data visualisation
+  * Les données sont recueillies dans un but de data visualisation
+  * Accès à l'onglet Profil
+    * Consulter ses données KPI
+    * Consulter ses statistiques
+    * Consulter son historique des quiz réalisés
+    * Consulter la liste des quiz créés
+    * Consulter ses informations personnelles
+  * Accès aux quiz aléatoires
+  * Accès à la création de quiz personnalisés
 
-* ML -> solution 4 :<br>
-- données d'entrainement : https://commonvoice.mozilla.org/fr/datasets <br>
-- surentrainement d'un modèle complexe type Wav2Vec : https://github.com/facebookresearch/fairseq/blob/main/examples/wav2vec/README.md<br>
-- TSD à déterminer en fonction du bruit<br>
+### <span style="color:#FFE15D"><u>Interface Administrateur (A DÉVELOPPER) :</u></span>
+
+* Ajouter/supprimer quiz
+* Ajouter/supprimer user
+* Système de validation des quiz créés par les utilisateurs
+
+
+## <span style="color:#F49D1A">III - Data Visualisation</span>
+### <span style="color:#FFE15D"><u>Technologie :</u></span>
+* Frontend : E-Chart
+
+### <span style="color:#FFE15D"><u>Interface :</u></span>
+* Dans l'onglet Profil > KPI :
+  * KPI Global :
+    * Le score moyen sur tous les quiz effectués
+    * Le nombre de quiz créé
+  * KPI Thème :
+    * Le meilleur score obtenu avec le nom du thème
+    * Le thème où le score est le plus bas dans un but de l'améliorer
+  * KPI Quiz :
+    * Le meilleur score obtenu avec le nom du quiz
+    * Le quiz où le score est le plus bas dans un but de l'améliorer
+
+
+* Dans l'onglet Profil > Statistiques :
+  * Un graphique affiche la moyenne obtenue dans chaque thème effectué
+  * Cette partie est à améliorer pour afficher d'autres données de data visualisation
+
+
+* Dans l'onglet Dashboard :
+  * Un graphique qui affiche les données récoltées sur tous les utilisateurs connectés et non connectés
+  * En amélioration pour afficher des données pertinentes, qui donne envie aux utilisateurs de créer un compte et d'être actif sur notre plateforme
+
+## <span style="color:#F49D1A">IV - Machine Learning</span>
+
+Pour la partie machine learning nous avons opté pour un calcul des MFCCs à passer ensuite à notre modèle. Pour le modèle, nous sommes dans un premier temps partis sur un LSTM assez basique afin de nous assurer que nous avions une première solution qui marche avant de passer sur un modèle Transformer. <br>
+Au final nous avons une bien meilleure précision sur le modèle LSTM (98% de précision sur les données de test) et nous l'avons donc gardé pour la solution finale. <br>
+
+### <span style="color:#FFE15D"><u>Préparation de la donnée :</u></span>
+
+- Troncage des fichiers audio<br>
+- Calculs des MFCCs <br>
+- Padding<br>
+- Normalisation des coefficients<br>
+
+### <span style="color:#FFE15D"><u>Conception du LSTM :</u></span>
+- Conv1D
+- MaxPooling1D
+- LSTM
+- LSTM
+- Dense (relu)
+- Softmax
+
+### <span style="color:#FFE15D"><u>Conception du modèle Transformer :</u></span>
+- Normalisation
+- Auto-attention
+- Normalisation
+- Conv1D
+- Conv1D
+- Normalisation
+- Auto-attention
+- Normalisation
+- Conv1D
+- Conv1D
+- AveragePooling1D
+- Softmax
+
+### <span style="color:#FFE15D"><u>Optimisation des modèles :</u></span>
+Pour l'optimisation du modèle nous avons principalement changé la manière dont nous effectuions le padding et la normalisation. Une autre manière dont nous avons pu grandement augmenter notre précision est en choisissant le bon nombre d'epoch pour s'arrêter juste avant que notre modèle ne commence à sur-apprendre. <br>
+
+Les fichiers Jupyter Notebook des différentes versions des modèles sont disponibles sur le github du projet.
 
 Récup les questions --> https://quipoquiz.com/module/sed/quiz/fr/start_quiz.snc?quiz=514<br>
 Récup des réponses --> https://quipoquiz.com/module/sed/quiz/fr/answer_question.snc?quiz=514&answer=true&question=16628
