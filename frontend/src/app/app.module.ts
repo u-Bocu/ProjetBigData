@@ -45,6 +45,7 @@ import { StarRatingComponent } from './components/star-rating/star-rating.compon
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatExpansionModule } from  '@angular/material/expansion';
 import {NgxEchartsModule} from "ngx-echarts";
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import {NgxEchartsModule} from "ngx-echarts";
     ProfileUserQuizCreatedComponent,
     ProfileUserStatisticsComponent,
     ProfileUserKPIComponent,
-    StarRatingComponent
+    StarRatingComponent,
+    DashboardComponent
   ],
     imports: [
         BrowserModule,

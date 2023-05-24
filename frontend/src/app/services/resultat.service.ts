@@ -22,4 +22,11 @@ export class ResultatService {
       {headers: environment.HEADERS}
     );
   }
+
+  public getParticipants(): Observable<any> {
+    return this.http.get(
+      environment.API_URL + '/resultats/resultats',
+      {headers: environment.HEADERS}
+    );
+  }
 }

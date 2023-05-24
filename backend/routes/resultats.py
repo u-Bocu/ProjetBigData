@@ -34,3 +34,37 @@ def post_resultat():
         "message": message,
         "data": None
     }
+
+@resultats.route('/resultats', methods=['GET'])
+def getParticipants():
+    success = True
+    message = "Nombre de participants récupérées avec succès"
+    count = 0
+    rows = []
+
+    try:
+        mysqldb = mysql.connector.connect(**DB_CONFIG)
+        cursor = mysqldb.cursor(dictionary=True)
+        cursor.execute(''' SELECT t.label as Theme, COUNT(r.id) as Participant
+                            FROM big_data_project.resultats r
+                                JOIN big_data_project.quiz q ON q.id = r.id_quiz
+                                JOIN big_data_project.themes t ON q.id_theme = t.id
+                            GROUP BY t.label; ''')
+
+        rows = cursor.fetchall()
+        count = cursor.rowcount
+
+        cursor.close()
+
+    except:
+        success = False
+        message = "Erreur lors de la récupération des participants."
+
+    return {
+        "success": success,
+        "message": message,
+        "data": {
+            'count': count,
+            'rows': rows
+        }
+    }
