@@ -79,7 +79,7 @@ export class ProfileUserStatisticsComponent implements OnInit, OnChanges {
       series: [
         {
           name: 'Moyenne par thème',
-          type: 'bar',
+          type: 'line',
           data: this.scores
         }
       ]
